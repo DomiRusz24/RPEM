@@ -1,0 +1,50 @@
+package pl.alvion.rpem.rpessentials;
+
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
+import pl.alvion.rpem.rpessentials.rpplayer.Traits;
+
+import java.io.File;
+import java.io.IOException;
+
+public final class RPEssentials extends JavaPlugin {
+
+    private File RPPlayerData;
+    private static FileConfiguration RPPlayerDataConfig;
+    
+    @Override
+    public void onEnable() {
+        System.out.println("AlvionRP core zostalo uruchomione");
+        Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
+
+
+    }
+
+    @Override
+    public void onDisable() {
+        System.out.println("AlvionRP core zostalo wylaczone");
+    }
+
+    public static FileConfiguration getRPPlayerDataConfig() {
+        return RPPlayerDataConfig;
+    }
+
+    private void createRPPlayerDataConfig() {
+        RPPlayerData = new File(getDataFolder(), "RPPlayerData.yml");
+        if (!RPPlayerData.exists()) {
+            RPPlayerData.getParentFile().mkdirs();
+            saveResource("RPPlayerData.yml", false);
+        }
+
+        RPPlayerDataConfig= new YamlConfiguration();
+        try {
+            RPPlayerDataConfig.load(RPPlayerData);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+}
