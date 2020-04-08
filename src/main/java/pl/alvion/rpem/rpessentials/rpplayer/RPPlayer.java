@@ -23,7 +23,7 @@ public class RPPlayer {
     private FileConfiguration config = RPEssentials.getRPPlayerDataConfig();
     private Player player;
     protected String conigPath;
-    private int CurrentHP;
+    private double CurrentFractionHP;
     private ArrayList<Traits> playerTraits = new ArrayList<>();
 
     RPPlayer(Player player) {
@@ -41,16 +41,20 @@ public class RPPlayer {
         return player;
     }
 
-    public void damage(int hp, boolean ApplyDamage) {
-        this.CurrentHP = CurrentHP - hp;
-        if(ApplyDamage && this.CurrentHP % 100 == 0) {
-            this.getPlayer().damage(this.getPlayer().getHealth()*100 - this.CurrentHP);
+    public void damage(int hp) { //// Zadaje graczowi dmg w systemie 2000 (1HP = 100)
+        double fractionHP = hp % 100;
+        player.damage(1);
+        player.setHealth(player.getHealth() - (hp - fractionHP));
+        this.CurrentFractionHP = this.CurrentFractionHP - fractionHP;
+        if(this.CurrentFractionHP < 0) {
+            player.setHealth(player.getHealth() - 1);
+            this.CurrentFractionHP = Math.abs(this.CurrentFractionHP);
         }
     }
 
 
-    public int getCurrentHP() {
-        return CurrentHP;
+    public double getCurrentHP() {  //// Oddaje gracza hp w systemie 2000
+        return CurrentFractionHP + this.getPlayer().getHealth()*100;
     }
 
     public ArrayList<Traits> getPlayerTraits() {
