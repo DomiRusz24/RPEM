@@ -6,7 +6,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
-import pl.alvion.rpem.rpessentials.rpplayer.Traits;
 
 import java.io.File;
 import java.io.IOException;

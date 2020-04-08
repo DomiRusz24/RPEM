@@ -3,6 +3,8 @@ package pl.alvion.rpem.rpessentials.rpplayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
 import java.util.ArrayList;
 
@@ -19,8 +21,6 @@ public class RPPlayer {
     }
 
     private FileConfiguration config = RPEssentials.getRPPlayerDataConfig();
-    private Stats stats;
-    private Attributes attributes;
     private Player player;
     protected String conigPath;
     private int CurrentHP;
@@ -29,9 +29,12 @@ public class RPPlayer {
     RPPlayer(Player player) {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
-        stats = new Stats(this);
-        attributes = new Attributes(this);
-        CurrentHP = stats.getMaxhp();
+        for(Stats stats : Stats.values()) {
+            stats.setTrait(this, 0);
+        }
+        Stats.MaxHP.setTrait(this, 2000);
+        Stats.AvailableStatPoints.setTrait(this, 2);
+        RPPlayer.RPPlayers.add(this);
     }
 
     public Player getPlayer() {
@@ -45,13 +48,6 @@ public class RPPlayer {
         }
     }
 
-    public Attributes getAttributes() {
-        return attributes;
-    }
-
-    public Stats getStats() {
-        return stats;
-    }
 
     public int getCurrentHP() {
         return CurrentHP;
