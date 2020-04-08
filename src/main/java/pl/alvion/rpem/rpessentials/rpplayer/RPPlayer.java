@@ -60,4 +60,16 @@ public class RPPlayer {
     public ArrayList<Traits> getPlayerTraits() {
         return this.playerTraits;
     }
+
+    public void addTrait(Traits trait) {
+        Traits.playerTrait(this.player, trait, 0,0);
+    }
+
+    public void addTrait(Traits trait, int input1) {
+        Traits.playerTrait(this.player, trait, input1,0);
+    }
+
+    public void addTrait(Traits trait, int input1, int input2) {
+        Traits.playerTrait(this.player, trait, input1,input2);
+    }
 }
