@@ -8,15 +8,21 @@ public class Stats {
     private String path;
     private FileConfiguration config = RPEssentials.getRPPlayerDataConfig();
 
+
     Stats(RPPlayer RRplayer) {
         this.RPplayer = RRplayer;
         path = "Player." + RPplayer.getPlayer().getDisplayName() + ".stats.";
+        config.addDefault(path + "availablePoints", 1);
         config.addDefault(path + "maxhp", 2000);
         config.addDefault(path + "strength", 0);
         config.addDefault(path + "agility", 0);
         config.addDefault(path + "endurance", 0);
         config.addDefault(path + "intelligence", 0);
         config.addDefault(path + "magic", 0);
+    }
+
+    public int getAvailablePoints() {
+        return config.getInt(path + "availablePoints");
     }
 
     public int getAgility() {
@@ -43,6 +49,10 @@ public class Stats {
         return config.getInt(path + "strength");
     }
 
+    public void setAvailablePoints(int value) {
+        config.set(path + "availablePoints", value);
+    }
+
     public void setMaxHP(int value) {
         config.set(path + "maxhp", value);
     }
@@ -66,6 +76,7 @@ public class Stats {
     public void setMagic(int value) {
         config.set(path + "magic", value);
     }
+
 
     public RPPlayer getRPplayer() {
         return RPplayer;

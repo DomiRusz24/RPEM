@@ -56,8 +56,11 @@ public enum Traits {
         return this.PolishIndex;
     }
 
-    public static void playerTrait(Player player, boolean firstTime, Traits trait , int input1, int input2) {
-            switch (trait) {
+    public static void playerTrait(Player player, Traits trait , int input1, int input2) {
+        if(RPPlayer.getRPPlayer(player).getPlayerTraits() != null) {
+            boolean firstTime = !RPPlayer.getRPPlayer(player).getPlayerTraits().contains(trait);
+        }
+        switch (trait) {
                 case Gastrophase:
 
                     break;

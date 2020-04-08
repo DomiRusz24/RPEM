@@ -1,7 +1,6 @@
 package pl.alvion.rpem.rpessentials.rpplayer;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 
@@ -20,18 +19,18 @@ public class RPPlayer {
     }
 
     private FileConfiguration config = RPEssentials.getRPPlayerDataConfig();
-    public Stats stats;
-    public Skills skills;
+    private Stats stats;
+    private Attributes attributes;
     private Player player;
     protected String conigPath;
     private int CurrentHP;
-    ArrayList<Traits> playerTraits = new ArrayList<>();
+    private ArrayList<Traits> playerTraits = new ArrayList<>();
 
     RPPlayer(Player player) {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
         stats = new Stats(this);
-        skills = new Skills(this);
+        attributes = new Attributes(this);
         CurrentHP = stats.getMaxhp();
     }
 
@@ -46,4 +45,19 @@ public class RPPlayer {
         }
     }
 
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public int getCurrentHP() {
+        return CurrentHP;
+    }
+
+    public ArrayList<Traits> getPlayerTraits() {
+        return this.playerTraits;
+    }
 }

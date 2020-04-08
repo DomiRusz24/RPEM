@@ -1,12 +1,12 @@
 package pl.alvion.rpem.rpessentials.rpplayer;
 
-public class Skills {
+public class Attributes {
     private RPPlayer rpPlayer;
 
 
 
 
-    Skills(RPPlayer rpPlayer) {
+    Attributes(RPPlayer rpPlayer) {
         this.rpPlayer = rpPlayer;
     }
 
