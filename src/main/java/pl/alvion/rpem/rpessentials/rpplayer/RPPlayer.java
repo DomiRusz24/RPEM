@@ -3,6 +3,7 @@ package pl.alvion.rpem.rpessentials.rpplayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.rpplayer.attribute.Attribute;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
@@ -25,6 +26,7 @@ public class RPPlayer {
     protected String conigPath;
     private double CurrentFractionHP;
     private ArrayList<Traits> playerTraits = new ArrayList<>();
+    private ArrayList<Attribute> playerAttributes = new ArrayList<>();
 
     RPPlayer(Player player) {
         this.player = player;
@@ -57,19 +59,19 @@ public class RPPlayer {
         return CurrentFractionHP + this.getPlayer().getHealth()*100;
     }
 
-    public ArrayList<Traits> getPlayerTraits() {
-        return this.playerTraits;
+    public ArrayList<Attribute> getPlayerAttributes() {
+        return playerAttributes;
     }
 
     public void addTrait(Traits trait) {
-        Traits.playerTrait(this.player, trait, 0,0);
+        Traits.addPlayerTrait(this.player, trait, 0,0);
     }
 
     public void addTrait(Traits trait, int input1) {
-        Traits.playerTrait(this.player, trait, input1,0);
+        Traits.addPlayerTrait(this.player, trait, input1,0);
     }
 
     public void addTrait(Traits trait, int input1, int input2) {
-        Traits.playerTrait(this.player, trait, input1,input2);
+        Traits.addPlayerTrait(this.player, trait, input1,input2);
     }
 }
