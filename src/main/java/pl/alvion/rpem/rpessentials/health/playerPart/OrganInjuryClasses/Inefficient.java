@@ -1,21 +1,18 @@
-package pl.alvion.rpem.rpessentials.health.playerPart.BodyPartInjuriesClass;
+package pl.alvion.rpem.rpessentials.health.playerPart.OrganInjuryClasses;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import pl.alvion.rpem.rpessentials.health.playerPart.PlayerBodyInjury;
-import pl.alvion.rpem.rpessentials.health.playerPart.PlayerBodyPart;
+import pl.alvion.rpem.rpessentials.health.playerPart.PlayerOrgan;
+import pl.alvion.rpem.rpessentials.health.playerPart.PlayerOrganInjury;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
-public class Scratch extends PlayerBodyInjury {
-
-
-    public Scratch(PlayerBodyPart part, int Intensity) {
+public class Inefficient extends PlayerOrganInjury {
+    public Inefficient(PlayerOrgan part, int Intensity) {
         super(part, Intensity);
     }
 
     @Override
-    public Material getMaterial() {
-        return Material.FLINT;
+    public Material getMaterialType() {
+        return Material.WOODEN_HOE;
     }
 
 
@@ -43,6 +40,4 @@ public class Scratch extends PlayerBodyInjury {
     public double infectChance() {
         return 0;
     }
-
-
 }

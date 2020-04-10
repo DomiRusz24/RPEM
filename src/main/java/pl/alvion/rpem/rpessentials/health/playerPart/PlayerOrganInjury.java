@@ -4,23 +4,21 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
-import java.util.ArrayList;
-
-public abstract class PlayerBodyInjury {
-    private PlayerBodyPart bodyPart;
+public abstract class PlayerOrganInjury {
+    private PlayerOrgan Organ;
     private RPPlayer rpPlayer;
     private int intensity;
 
-    public PlayerBodyInjury(PlayerBodyPart part, int Intensity) {
-        this.bodyPart = part;
-        this.rpPlayer = getBodyPart().getRpPlayer();
+    public PlayerOrganInjury(PlayerOrgan part, int Intensity) {
+        this.Organ = part;
+        this.rpPlayer = getOrgan().getRpPlayer();
         this.intensity = Intensity;
-        this.bodyPart.getInjuries().add(this);
-        run(rpPlayer, intensity * part.BodyPartImportance());
+        this.Organ.getInjuries().add(this);
+        run(rpPlayer, intensity * part.OrganImportance());
     }
 
-    public PlayerBodyPart getBodyPart() {
-        return bodyPart;
+    public PlayerOrgan getOrgan() {
+        return Organ;
     }
 
     public int getIntensity() {
@@ -33,18 +31,16 @@ public abstract class PlayerBodyInjury {
 
     public boolean infect() {
         if(infectSeverity() != 0) {
-            this.bodyPart.infectPart(infectSeverity() * bodyPart.BodyPartImportance());
+            this.Organ.infectOrgan(infectSeverity() * Organ.OrganImportance());
             return true;
         }
         return false;
     }
 
-    abstract public Material getMaterial(); // Ikonka na GUI
+    abstract public Material getMaterialType(); // Ikonka na GUI
     abstract public void run(RPPlayer rpPlayer, int intensity); // Efekty urazy
     abstract public int regenerationTimeMax(); // Maksymalny czas wyzdrowienia
     abstract public int healingLevelMin(); // Minimalny level leczenia
     public abstract double infectSeverity(); // Ustaw 0 jezeli nie moze infekowac. Sila Skala od 0.1 - 1
     public abstract double infectChance(); // Ustaw 0 jezeli nie moze infekowac. Szansa skala od 0.1 - 10
-
-
 }
