@@ -31,7 +31,7 @@ public class RandomStats implements GUI {
         itemMeta.setDisplayName(ChatColor.RED + "I");
         ArrayList<String> lore = new ArrayList<>();
 
-
+        return null;
     }
 
     @Override
