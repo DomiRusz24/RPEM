@@ -2,6 +2,8 @@ package pl.alvion.rpem.rpessentials.health.playerPart;
 
 import pl.alvion.rpem.rpessentials.health.enums.Organ;
 import pl.alvion.rpem.rpessentials.health.enums.OrganInjury;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.BleedableBodyPart;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
 import pl.alvion.rpem.rpessentials.health.playerPart.OrganClasses.Brain;
 import pl.alvion.rpem.rpessentials.health.playerPart.OrganInjuryClasses.Inefficient;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
@@ -46,14 +48,14 @@ public abstract class PlayerOrgan {
     }
 
     public boolean increaseBleedIntensity(int value) {
-        if (canBleed()) {
+        if (this instanceof BleedableBodyPart ) {
             bleedIntensity = bleedIntensity + value;
         }
         return false;
     }
 
     public boolean stopBleeding() {
-        if(canBleed() && bleedIntensity != 0) {
+        if(this instanceof BleedableBodyPart && bleedIntensity != 0) {
             this.bleedIntensity = 0;
             return true;
         }
@@ -65,8 +67,8 @@ public abstract class PlayerOrgan {
     }
 
     public boolean infectOrgan(double value) {
-        if(canBeInfected()) {
-            onInfect(value);
+        if(this instanceof InfectableBodyPart) {
+            ((InfectableBodyPart) this).onInfect(value);
         }
         return false;
     }
@@ -131,11 +133,7 @@ public abstract class PlayerOrgan {
         return false;
     } // Po prostu tworzysz klase z uraza lub cos jeszcze dodatkowo.
 
-    abstract public boolean canBleed(); // Czy moze krwawic
-    abstract public boolean canBeInfected(); // Czy moze zostaw zainfekowany
-    abstract public void onInfect(double value); // Kiedy gracz zostanie zainfekowany
     abstract public Organ Organ(); // Jaki organ.
     abstract public int OrganComplexity(); // Trudnosc wyleczenia tego organu (1 - 10)
-    abstract public int OrganImportance(); // Jak wazny jest ten organ (jak bedzie infekcja/uraza to mnozy przez ta liczbe) 0.1 - 1
     abstract public ArrayList<OrganInjury> incapableInjuries(); // Jakie urazy nie moze dostac.
 }

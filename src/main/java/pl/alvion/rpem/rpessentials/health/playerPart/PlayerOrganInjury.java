@@ -2,26 +2,28 @@ package pl.alvion.rpem.rpessentials.health.playerPart;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableInjury;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
 public abstract class PlayerOrganInjury {
     private PlayerOrgan Organ;
     private RPPlayer rpPlayer;
-    private int intensity;
+    private double intensity;
 
     public PlayerOrganInjury(PlayerOrgan part, int Intensity) {
         this.Organ = part;
         this.rpPlayer = getOrgan().getRpPlayer();
         this.intensity = Intensity;
         this.Organ.getInjuries().add(this);
-        run(rpPlayer, intensity * part.OrganImportance());
+        run(rpPlayer, intensity * part.OrganComplexity() * 0.1);
     }
 
     public PlayerOrgan getOrgan() {
         return Organ;
     }
 
-    public int getIntensity() {
+    public double getIntensity() {
         return intensity;
     } // Mnoznik obrazen, czasu trwania itd.
 
@@ -30,17 +32,15 @@ public abstract class PlayerOrganInjury {
     }
 
     public boolean infect() {
-        if(infectSeverity() != 0) {
-            this.Organ.infectOrgan(infectSeverity() * Organ.OrganImportance());
+        if(this.Organ instanceof InfectableBodyPart && this instanceof InfectableInjury) {
+            this.Organ.infectOrgan(((InfectableInjury) this).infectSeverity() * ((InfectableBodyPart) this.Organ).infectSeverity());
             return true;
         }
         return false;
     }
 
     abstract public Material getMaterialType(); // Ikonka na GUI
-    abstract public void run(RPPlayer rpPlayer, int intensity); // Efekty urazy
+    abstract public void run(RPPlayer rpPlayer, double intensity); // Efekty urazy
     abstract public int regenerationTimeMax(); // Maksymalny czas wyzdrowienia
     abstract public int healingLevelMin(); // Minimalny level leczenia
-    public abstract double infectSeverity(); // Ustaw 0 jezeli nie moze infekowac. Sila Skala od 0.1 - 1
-    public abstract double infectChance(); // Ustaw 0 jezeli nie moze infekowac. Szansa skala od 0.1 - 10
 }

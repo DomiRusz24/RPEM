@@ -4,6 +4,9 @@ import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health.enums.BodyPartInjury;
 import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartClasses.LeftArm;
 import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartInjuriesClass.Scratch;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.Amputable;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.BleedableBodyPart;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
 import java.util.ArrayList;
@@ -73,23 +76,38 @@ public abstract class PlayerBodyPart {
     }
 
     public boolean increaseBleedIntensity(int value) {
-        if (canBleed()) {
+        if (this instanceof BleedableBodyPart) {
             bleedIntensity = bleedIntensity + value;
         }
         return false;
     }
 
     public boolean stopBleeding() {
-        if(canBleed() && bleedIntensity != 0) {
+        if(this instanceof BleedableBodyPart && bleedIntensity != 0) {
             this.bleedIntensity = 0;
             return true;
         }
         return false;
     }
 
+    private boolean amputated = false;
+
+    public boolean isAmputated() {
+        return amputated;
+    }
+
+    public boolean amputate() {
+        if(this instanceof Amputable) {
+            ((Amputable) this).onAmputate();
+            amputated = true;
+            return true;
+        }
+        return false;
+    }
+
     public boolean infectPart(double value) {
-        if(canBeInfected()) {
-            onInfect(value);
+        if(this instanceof InfectableBodyPart) {
+            ((InfectableBodyPart) this).onInfect(value);
         }
         return false;
     }
@@ -213,11 +231,8 @@ public abstract class PlayerBodyPart {
         return false;
     } // Po prostu tworzysz klase z uraza lub cos jeszcze dodatkowo.
 
-    abstract public boolean canBleed(); // Czy moze krwawic
-    abstract public boolean canBeInfected(); // Czy moze zostaw zainfekowany
-    abstract public void onInfect(double value); // Kiedy gracz zostanie zainfekowany
+
     abstract public BodyPart bodyPart(); // Jaka czesc ciala
     abstract public int BodyPartComplexity(); // Trudnosc wyleczenia tego czlonku (1 - 10)
-    abstract public int BodyPartImportance(); // Jak wazny jest ten czlonek (jak bedzie infekcja/uraza to mnozy przez ta liczbe) 0.1 - 1
     abstract public ArrayList<BodyPartInjury> incapableInjuries(); // Jakie urazy nie moze dostac.
 }
