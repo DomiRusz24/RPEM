@@ -26,18 +26,13 @@ public enum AttributesEnum {
     Sneaking(AttributeTypes.Body);
 
     private AttributeTypes type;
-    private Attribute attributetype;
 
     AttributesEnum(AttributeTypes type) {
         this.type = type;
-        this.attributetype = attributetype;
     }
 
     public AttributeTypes getType() {
         return type;
     }
 
-    public Attribute getAttribute() {
-        return attributetype;
-    }
 }

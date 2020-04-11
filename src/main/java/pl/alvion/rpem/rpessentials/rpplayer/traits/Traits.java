@@ -1,6 +1,7 @@
 package pl.alvion.rpem.rpessentials.rpplayer.traits;
 
 import org.bukkit.entity.Player;
+import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
 public enum Traits {
     Gastrophase("Gastrofaza"),
@@ -58,6 +59,9 @@ public enum Traits {
 
 
     public static void addPlayerTrait(Player player, Traits trait, int input1, int input2) {
+        if(!RPPlayer.getRPPlayer(player).getPlayerTraits().contains(trait)) {
+            RPPlayer.getRPPlayer(player).getPlayerTraits().add(trait);
+        }
         switch (trait) {
                 case Gastrophase:
 
