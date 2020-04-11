@@ -32,10 +32,10 @@ public class RPPlayer {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
         for(Stats stats : Stats.values()) {
-            stats.setTrait(this, 0);
+            stats.setStat(this, 0);
         }
-        Stats.MaxHP.setTrait(this, 2000);
-        Stats.AvailableStatPoints.setTrait(this, 2);
+        Stats.MaxHP.setStat(this, 2000);
+        Stats.AvailableStatPoints.setStat(this, 2);
         RPPlayer.RPPlayers.add(this);
     }
 
@@ -73,5 +73,17 @@ public class RPPlayer {
 
     public void addTrait(Traits trait, int input1, int input2) {
         Traits.addPlayerTrait(this.player, trait, input1,input2);
+    }
+
+    public int getStatLevel(Stats stat) {
+        return stat.getStat(this);
+    }
+
+    public void setStatLevel(Stats stat, int value) {
+        stat.setStat(this, value);
+    }
+
+    public ArrayList<Traits> getPlayerTraits() {
+        return playerTraits;
     }
 }
