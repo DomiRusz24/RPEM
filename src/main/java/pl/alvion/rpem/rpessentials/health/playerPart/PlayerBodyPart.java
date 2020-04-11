@@ -1,7 +1,9 @@
 package pl.alvion.rpem.rpessentials.health.playerPart;
 
+import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health.enums.BodyPartInjury;
+import pl.alvion.rpem.rpessentials.health.enums.InfectionStage;
 import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartClasses.*;
 import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartInjuriesClass.Scratch;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.Amputable;
@@ -46,11 +48,13 @@ public abstract class PlayerBodyPart {
     }
 
     private RPPlayer rpPlayer;
+    private Player player;
     public ArrayList<PlayerBodyInjury> injuries = new ArrayList<>();
     private int bleedIntensity = 0;
 
     public PlayerBodyPart(RPPlayer rpPlayer) {
         this.rpPlayer = rpPlayer;
+        this.player = rpPlayer.getPlayer();
         rpPlayer.getPlayerHealthStatus().getPlayerBodyParts().add(this);
 
     }
@@ -61,6 +65,14 @@ public abstract class PlayerBodyPart {
 
     public BodyPart getBodyPart() {
         return bodyPart();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public int getBleedIntensity() {
+        return bleedIntensity;
     }
 
     public boolean increaseBleedIntensity(int value) {
@@ -93,9 +105,22 @@ public abstract class PlayerBodyPart {
         return false;
     }
 
-    public boolean infectPart(double value) {
+    public boolean infectPart(double value, InfectionStage stage) {
         if(this instanceof InfectableBodyPart) {
-            ((InfectableBodyPart) this).onInfect(value);
+            switch (stage) {
+                case Low:
+                    ((InfectableBodyPart) this).onInfectStage1(value);
+                    break;
+                case Medium:
+                    ((InfectableBodyPart) this).onInfectStage2(value);
+                    break;
+                case High:
+                    ((InfectableBodyPart) this).onInfectStage3(value);
+                    break;
+                case Highest:
+                    ((InfectableBodyPart) this).onInfectStage4(value);
+                    break;
+            }
         }
         return false;
     }

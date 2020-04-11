@@ -41,9 +41,25 @@ public class LeftLeg extends PlayerBodyPart implements Amputable, BleedableBodyP
     }
 
     @Override
-    public void onInfect(double strength) {
+    public void onInfectStage1(double strength) {
 
     }
+
+    @Override
+    public void onInfectStage2(double strength) {
+
+    }
+
+    @Override
+    public void onInfectStage3(double strength) {
+
+    }
+
+    @Override
+    public void onInfectStage4(double strength) {
+
+    }
+
 
     @Override
     public BodyPart bodyPart() {
