@@ -2,6 +2,7 @@ package pl.alvion.rpem.rpessentials.health.playerPart.BodyPartClasses;
 
 import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health.enums.BodyPartInjury;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.Amputable;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
 import pl.alvion.rpem.rpessentials.health.playerPart.PlayerBodyPart;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
@@ -9,7 +10,7 @@ import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
 import java.util.ArrayList;
 
-public class RightEye extends PlayerBodyPart implements InfectableBodyPart {
+public class RightEye extends PlayerBodyPart implements InfectableBodyPart, Amputable {
     public RightEye(RPPlayer rpPlayer) {
         super(rpPlayer);
     }
@@ -53,5 +54,20 @@ public class RightEye extends PlayerBodyPart implements InfectableBodyPart {
     @Override
     public ArrayList<BodyPartInjury> incapableInjuries() {
         return null;
+    }
+
+    @Override
+    public double amputationSuccessChance() {
+        return 0;
+    }
+
+    @Override
+    public double amputationInfectionChance() {
+        return 0;
+    }
+
+    @Override
+    public void onAmputate() {
+
     }
 }
