@@ -2,7 +2,7 @@ package pl.alvion.rpem.rpessentials.health.playerPart;
 
 import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health.enums.BodyPartInjury;
-import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartClasses.LeftArm;
+import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartClasses.*;
 import pl.alvion.rpem.rpessentials.health.playerPart.BodyPartInjuriesClass.Scratch;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.Amputable;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.BleedableBodyPart;
@@ -18,41 +18,29 @@ public abstract class PlayerBodyPart {
             case LeftArm:
                 return new LeftArm(rpPlayer);
             case RightArm:
-
-                break;
+                return new RightArm(rpPlayer);
             case LeftLeg:
-
-                break;
+                return new LeftLeg(rpPlayer);
             case RightLeg:
-
-                break;
+                return new RightLeg(rpPlayer);
             case LeftHand:
-
-                break;
+                return new LeftHand(rpPlayer);
             case RightHand:
-
-                break;
+                return new RightHand(rpPlayer);
             case LeftFoot:
-
-                break;
+                return new LeftFoot(rpPlayer);
             case RightFoot:
-
-                break;
+                return new RightFoot(rpPlayer);
             case Chest:
-
-                break;
+                return new Chest(rpPlayer);
             case Head:
-
-                break;
+                return new Head(rpPlayer);
             case Neck:
-
-                break;
+                return new Neck(rpPlayer);
             case LeftEye:
-
-                break;
+                return new LeftEye(rpPlayer);
             case RightEye:
-
-                break;
+                return new RightEye(rpPlayer);
         }
         return null;
     }
