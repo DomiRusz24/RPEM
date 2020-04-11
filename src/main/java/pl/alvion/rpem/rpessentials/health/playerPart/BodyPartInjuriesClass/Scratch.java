@@ -2,11 +2,12 @@ package pl.alvion.rpem.rpessentials.health.playerPart.BodyPartInjuriesClass;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableInjury;
 import pl.alvion.rpem.rpessentials.health.playerPart.PlayerBodyInjury;
 import pl.alvion.rpem.rpessentials.health.playerPart.PlayerBodyPart;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
-public class Scratch extends PlayerBodyInjury {
+public class Scratch extends PlayerBodyInjury implements InfectableInjury {
 
 
     public Scratch(PlayerBodyPart part, int Intensity) {
@@ -18,11 +19,11 @@ public class Scratch extends PlayerBodyInjury {
         return Material.FLINT;
     }
 
-
     @Override
-    public void run(RPPlayer rpPlayer, int intensity) {
+    public void run(RPPlayer rpPlayer, double intensity) {
 
     }
+
 
     @Override
     public int regenerationTimeMax() {
@@ -34,6 +35,7 @@ public class Scratch extends PlayerBodyInjury {
         return 0;
     }
 
+
     @Override
     public double infectSeverity() {
         return 0;
@@ -43,6 +45,4 @@ public class Scratch extends PlayerBodyInjury {
     public double infectChance() {
         return 0;
     }
-
-
 }

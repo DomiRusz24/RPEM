@@ -15,11 +15,11 @@ public class Inefficient extends PlayerOrganInjury {
         return Material.WOODEN_HOE;
     }
 
-
     @Override
-    public void run(RPPlayer rpPlayer, int intensity) {
+    public void run(RPPlayer rpPlayer, double intensity) {
 
     }
+
 
     @Override
     public int regenerationTimeMax() {
@@ -31,13 +31,4 @@ public class Inefficient extends PlayerOrganInjury {
         return 0;
     }
 
-    @Override
-    public double infectSeverity() {
-        return 0;
-    }
-
-    @Override
-    public double infectChance() {
-        return 0;
-    }
 }
