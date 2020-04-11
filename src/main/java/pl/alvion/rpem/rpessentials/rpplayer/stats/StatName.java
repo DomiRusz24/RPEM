@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
-enum StatName {
+public enum StatName {
     Agility,
     Endurance,
     Intelligence,
