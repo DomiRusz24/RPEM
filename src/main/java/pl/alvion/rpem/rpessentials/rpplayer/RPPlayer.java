@@ -4,7 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer.attribute.Attribute;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
 import java.util.ArrayList;
@@ -23,19 +23,19 @@ public class RPPlayer {
 
     private FileConfiguration config = RPEssentials.getRPPlayerDataConfig();
     private Player player;
-    protected String conigPath;
+    protected String configPath;
     private double CurrentFractionHP;
     private ArrayList<Traits> playerTraits = new ArrayList<>();
     private ArrayList<Attribute> playerAttributes = new ArrayList<>();
 
     RPPlayer(Player player) {
         this.player = player;
-        conigPath = "Player." + this.player.getDisplayName();
-        for(Stats stats : Stats.values()) {
-            stats.setTrait(this, 0);
+        configPath = "Player." + this.player.getDisplayName();
+        for(StatName stats : StatName.values()) {
+            stats.setStat(this, 0);
         }
-        Stats.MaxHP.setTrait(this, 2000);
-        Stats.AvailableStatPoints.setTrait(this, 2);
+        StatName.MaxHP.setStat(this, 2000);
+        StatName.AvailableStatPoints.setStat(this, 2);
         RPPlayer.RPPlayers.add(this);
     }
 
