@@ -63,7 +63,7 @@ public class RightFoot extends PlayerBodyPart implements Amputable, BleedableBod
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.RightFoot;
     }
 
     @Override

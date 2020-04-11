@@ -41,7 +41,7 @@ public class LeftEye extends PlayerBodyPart implements InfectableBodyPart {
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.LeftEye;
     }
 
     @Override

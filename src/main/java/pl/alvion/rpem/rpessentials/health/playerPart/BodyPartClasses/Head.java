@@ -43,7 +43,7 @@ public class Head extends PlayerBodyPart implements InfectableBodyPart, Amputabl
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.Head;
     }
 
     @Override

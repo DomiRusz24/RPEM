@@ -42,7 +42,7 @@ public class Neck extends PlayerBodyPart implements InfectableBodyPart, Bleedabl
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.Neck;
     }
 
     @Override

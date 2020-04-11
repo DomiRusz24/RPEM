@@ -63,7 +63,7 @@ public class LeftLeg extends PlayerBodyPart implements Amputable, BleedableBodyP
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.LeftLeg;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class Chest extends PlayerBodyPart implements InfectableBodyPart, Bleedab
 
     @Override
     public BodyPart bodyPart() {
-        return null;
+        return BodyPart.Chest;
     }
 
     @Override
