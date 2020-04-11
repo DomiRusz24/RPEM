@@ -80,7 +80,7 @@ public abstract class PlayerBodyPart {
             bleedIntensity = bleedIntensity + value;
         }
         return false;
-    }
+    } // dodaj ilosc do krwawienia
 
     public boolean stopBleeding() {
         if(this instanceof BleedableBodyPart && bleedIntensity != 0) {
@@ -88,7 +88,7 @@ public abstract class PlayerBodyPart {
             return true;
         }
         return false;
-    }
+    } // Resetuj krwawienie
 
     private boolean amputated = false;
 
@@ -103,7 +103,7 @@ public abstract class PlayerBodyPart {
             return true;
         }
         return false;
-    }
+    } // Amputuj ta czesc.
 
     public boolean infectPart(double value, InfectionStage stage) {
         if(this instanceof InfectableBodyPart) {
@@ -123,7 +123,7 @@ public abstract class PlayerBodyPart {
             }
         }
         return false;
-    }
+    } // Infekuj ta czesc.
 
     public ArrayList<PlayerBodyInjury> getInjuries() {
         return injuries;

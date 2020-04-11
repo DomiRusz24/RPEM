@@ -1,5 +1,7 @@
 package pl.alvion.rpem.rpessentials.health.playerPart;
 
+import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
+import pl.alvion.rpem.rpessentials.health.enums.InfectionStage;
 import pl.alvion.rpem.rpessentials.health.enums.Organ;
 import pl.alvion.rpem.rpessentials.health.enums.OrganInjury;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.BleedableBodyPart;
@@ -52,7 +54,7 @@ public abstract class PlayerOrgan {
             bleedIntensity = bleedIntensity + value;
         }
         return false;
-    }
+    } // Dodaj wartosc do wylewu krwi.
 
     public boolean stopBleeding() {
         if(this instanceof BleedableBodyPart && bleedIntensity != 0) {
@@ -60,18 +62,31 @@ public abstract class PlayerOrgan {
             return true;
         }
         return false;
-    }
+    } // Zresetuj krew.
 
     public ArrayList<PlayerOrganInjury> getInjuries() {
         return injuries;
     }
 
-    public boolean infectOrgan(double value) {
+    public boolean infectOrgan(double value, InfectionStage stage) {
         if(this instanceof InfectableBodyPart) {
-            ((InfectableBodyPart) this).onInfect(value);
+            switch (stage) {
+                case Low:
+                    ((InfectableBodyPart) this).onInfectStage1(value);
+                    break;
+                case Medium:
+                    ((InfectableBodyPart) this).onInfectStage2(value);
+                    break;
+                case High:
+                    ((InfectableBodyPart) this).onInfectStage3(value);
+                    break;
+                case Highest:
+                    ((InfectableBodyPart) this).onInfectStage4(value);
+                    break;
+            }
         }
         return false;
-    }
+    } // Infektuj organ.
 
     public boolean addInjury(OrganInjury injury, int intensity, int input1, int input2) {
         if(incapableInjuries().contains(injury)) {

@@ -2,6 +2,7 @@ package pl.alvion.rpem.rpessentials.health.playerPart;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import pl.alvion.rpem.rpessentials.health.enums.InfectionStage;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
@@ -32,13 +33,13 @@ public abstract class PlayerBodyInjury {
         return rpPlayer;
     }
 
-    public boolean infect() {
+    public boolean infect(InfectionStage stage) {
         if(this instanceof InfectableBodyPart) {
-            this.bodyPart.infectPart(((InfectableBodyPart) this).infectSeverity() * bodyPart.BodyPartComplexity() * 0.1);
+            this.bodyPart.infectPart(((InfectableBodyPart) this).infectSeverity() * bodyPart.BodyPartComplexity() * 0.1, stage);
             return true;
         }
         return false;
-    }
+    } // Infektuj ta czesc ciala gdzie jest ta uraza.
 
     abstract public Material getMaterial(); // Ikonka na GUI
     abstract public void run(RPPlayer rpPlayer, double intensity); // Efekty urazy
