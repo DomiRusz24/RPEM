@@ -4,3 +4,6 @@ main: pl.alvion.rpem.rpessentials.RPEssentials
 api-version: 1.13
 authors: [DomiRusz24, KarwszPL, PopePL]
 description: Plugin AlvionRP Core.
+commands:
+  GDC:
+    description: General debug command

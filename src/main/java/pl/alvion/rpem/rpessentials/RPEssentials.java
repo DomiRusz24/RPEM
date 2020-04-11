@@ -5,6 +5,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
+import pl.alvion.rpem.rpessentials.generalutils.gui.GUIListener;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
 
 import java.io.File;
@@ -12,14 +14,15 @@ import java.io.IOException;
 
 public final class RPEssentials extends JavaPlugin {
 
-    private File RPPlayerData;
-    private static FileConfiguration RPPlayerDataConfig;
+    public static File RPPlayerData;
+    public static FileConfiguration RPPlayerDataConfig;
     
     @Override
     public void onEnable() {
         System.out.println("AlvionRP core zostalo uruchomione");
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
-
+        Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
+        Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
 
     }
 
@@ -43,6 +46,14 @@ public final class RPEssentials extends JavaPlugin {
         try {
             RPPlayerDataConfig.load(RPPlayerData);
         } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveRPPlayerConfig() {
+        try {
+            RPPlayerDataConfig.save(RPPlayerData);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
