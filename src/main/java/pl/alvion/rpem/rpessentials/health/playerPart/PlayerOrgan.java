@@ -4,6 +4,7 @@ import pl.alvion.rpem.rpessentials.health.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health.enums.InfectionStage;
 import pl.alvion.rpem.rpessentials.health.enums.Organ;
 import pl.alvion.rpem.rpessentials.health.enums.OrganInjury;
+import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.Amputable;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.BleedableBodyPart;
 import pl.alvion.rpem.rpessentials.health.playerPart.Interfaces.InfectableBodyPart;
 import pl.alvion.rpem.rpessentials.health.playerPart.OrganClasses.Brain;
@@ -63,6 +64,28 @@ public abstract class PlayerOrgan {
         }
         return false;
     } // Zresetuj krew.
+
+    private boolean removed = false;
+
+    public boolean isRemoved() {
+        return removed;
+    }
+    public abstract void removePart();
+
+    public boolean isAmputated() {
+        return amputated;
+    }
+
+    private boolean amputated = false;
+
+    public boolean amputate() {
+        if(this instanceof Amputable) {
+            ((Amputable) this).onAmputate();
+            amputated = true;
+            return true;
+        }
+        return false;
+    } // Amputuj ta czesc.
 
     public ArrayList<PlayerOrganInjury> getInjuries() {
         return injuries;

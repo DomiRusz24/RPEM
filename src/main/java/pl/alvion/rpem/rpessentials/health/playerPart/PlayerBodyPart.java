@@ -97,6 +97,7 @@ public abstract class PlayerBodyPart {
     public boolean isRemoved() {
         return removed;
     }
+
     public abstract void removePart();
 
     public boolean isAmputated() {
