@@ -22,7 +22,6 @@ public final class RPEssentials extends JavaPlugin {
         createRPPlayerDataConfig();
         plugin = this;
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
-        plugin = this;
 
     }
 
