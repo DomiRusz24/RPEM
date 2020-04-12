@@ -5,9 +5,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
 public class Agility extends Stat {
+
 
     @Override
     public String name() {
@@ -25,8 +26,8 @@ public class Agility extends Stat {
     }
 
     @Override
-    public StatName statName() {
-        return StatName.Agility;
+    public Stats statName() {
+        return Stats.Agility;
     }
 
 

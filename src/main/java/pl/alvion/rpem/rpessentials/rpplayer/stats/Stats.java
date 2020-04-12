@@ -4,13 +4,14 @@ import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
-public enum StatName {
+public enum Stats {
     Agility,
     Endurance,
     Intelligence,
     Magic,
     Strength,
     MaxHP,
+    Medicine,
     AvailableStatPoints;
 
     public int getStat(RPPlayer RPplayer) {

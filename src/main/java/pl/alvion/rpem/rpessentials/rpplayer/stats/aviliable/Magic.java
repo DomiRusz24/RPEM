@@ -5,9 +5,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
 public class Magic extends Stat {
+
     @Override
     public String name() {
         return ChatColor.DARK_PURPLE + "Potencjal Magiczny";
@@ -18,13 +19,14 @@ public class Magic extends Stat {
         return new ItemStack(Material.NETHER_STAR, 1);
     }
 
+
     @Override
     public boolean canUpgrade(Player player) {
         return true;
     }
 
     @Override
-    public StatName statName() {
-        return StatName.Magic;
+    public Stats statName() {
+        return Stats.Magic;
     }
 }

@@ -5,9 +5,11 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
 public class Intelligence extends Stat {
+
+
     @Override
     public String name() {
         return ChatColor.BLUE + "Inteligencja";
@@ -24,7 +26,7 @@ public class Intelligence extends Stat {
     }
 
     @Override
-    public StatName statName() {
-        return StatName.Intelligence;
+    public Stats statName() {
+        return Stats.Intelligence;
     }
 }

@@ -5,10 +5,11 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
 public class KnowledgePoints extends Stat {
-    @Override
+
+
     public String name() {
         return ChatColor.GREEN + "Punkty Rozwoju";
     }
@@ -24,7 +25,7 @@ public class KnowledgePoints extends Stat {
     }
 
     @Override
-    public StatName statName() {
-        return StatName.AvailableStatPoints;
+    public Stats statName() {
+        return Stats.AvailableStatPoints;
     }
 }

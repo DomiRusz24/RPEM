@@ -9,17 +9,16 @@ import java.util.ArrayList;
 public abstract class Stat {
 
     public static ArrayList<Stat> stats = new ArrayList<>();
-
     abstract public String name();
     abstract public ItemStack guiItem();
     abstract public boolean canUpgrade(Player player);
-    abstract public StatName statName();
+    abstract public Stats statName();
     public void event(Event event){
 
     };
 
 
-    public static Stat getStat(StatName statName) {
+    public static Stat getStat(Stats statName) {
         for (Stat stat : stats) {
             if (stat.statName().equals(statName)) return stat;
         }

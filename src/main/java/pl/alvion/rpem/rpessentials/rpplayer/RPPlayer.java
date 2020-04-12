@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer.attribute.Attribute;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.StatName;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
 import java.util.ArrayList;
@@ -31,11 +31,11 @@ public class RPPlayer {
     RPPlayer(Player player) {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
-        for(StatName statName : StatName.values()) {
+        for(Stats statName : Stats.values()) {
             statName.setStat(this, 0);
         }
-        StatName.MaxHP.setStat(this, 2000);
-        StatName.AvailableStatPoints.setStat(this, 2);
+        Stats.MaxHP.setStat(this, 2000);
+        Stats.AvailableStatPoints.setStat(this, 2);
         RPPlayer.RPPlayers.add(this);
     }
 
@@ -75,11 +75,11 @@ public class RPPlayer {
         Traits.addPlayerTrait(this.player, trait, input1,input2);
     }
 
-    public int getStatLevel(StatName stat) {
+    public int getStatLevel(Stats stat) {
         return stat.getStat(this);
     }
 
-    public void setStatLevel(StatName stat, int value) {
+    public void setStatLevel(Stats stat, int value) {
         stat.setStat(this, value);
     }
 
