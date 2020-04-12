@@ -77,6 +77,11 @@ public class RPPlayer {
         Traits.addPlayerTrait(this.player, trait, input1,0);
     }
 
+    public double getPlayersMedicalChance() {
+        double level = 10 - this.getStatLevel(Stats.Intelligence);
+        return level / 10;
+    }
+
     public void addTrait(Traits trait, int input1, int input2) {
         Traits.addPlayerTrait(this.player, trait, input1,input2);
     }
