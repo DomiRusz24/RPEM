@@ -67,7 +67,7 @@ public class RPPlayer {
     }
 
     public double getPlayersMedicalChance() {
-        double level = 11 - this.getStatLevel(Stats.Medicine);
+        double level = 10 - this.getStatLevel(Stats.Intelligence);
         return level / 10;
     }
 
