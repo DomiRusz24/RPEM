@@ -16,6 +16,7 @@ public final class RPEssentials extends JavaPlugin {
 
     public static File RPPlayerData;
     public static FileConfiguration RPPlayerDataConfig;
+    private static JavaPlugin instance;
     
     @Override
     public void onEnable() {
@@ -23,6 +24,7 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
         Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
+        instance = this;
 
     }
 
@@ -56,5 +58,9 @@ public final class RPEssentials extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static JavaPlugin getInstance() {
+        return instance;
     }
 }
