@@ -5,8 +5,6 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
-import pl.alvion.rpem.rpessentials.generalutils.gui.GUIListener;
 import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
 
 import java.io.File;
@@ -22,8 +20,6 @@ public final class RPEssentials extends JavaPlugin {
     public void onEnable() {
         System.out.println("AlvionRP core zostalo uruchomione");
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
-        Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
-        Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
         instance = this;
 
     }
