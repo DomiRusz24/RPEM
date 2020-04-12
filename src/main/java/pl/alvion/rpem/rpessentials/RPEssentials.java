@@ -14,13 +14,13 @@ public final class RPEssentials extends JavaPlugin {
 
     public static File RPPlayerData;
     public static FileConfiguration RPPlayerDataConfig;
-    private static JavaPlugin instance;
+    public static JavaPlugin plugin;
     
     @Override
     public void onEnable() {
         System.out.println("AlvionRP core zostalo uruchomione");
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
-        instance = this;
+        plugin = this;
 
     }
 
@@ -54,9 +54,5 @@ public final class RPEssentials extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static JavaPlugin getInstance() {
-        return instance;
     }
 }

@@ -65,9 +65,9 @@ public abstract class PlayerOrganInjury {
                         public void run() {
                             ((HealableInjury) instance).healFully();
                         }
-                    }.runTaskLater(RPEssentials.getInstance(), (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
+                    }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
                 }
-            }.runTaskLater(RPEssentials.getInstance(), (long) (((HealableInjury) this).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()));
+            }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) this).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()));
         }
         return false;
     }
@@ -87,11 +87,11 @@ public abstract class PlayerOrganInjury {
                                 public void run() {
                                     ((HealableInjury) instance).healFully();
                                 }
-                            }.runTaskLater(RPEssentials.getInstance(), (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
+                            }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
                         }
-                    }.runTaskLater(RPEssentials.getInstance(), (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()));
+                    }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()));
                 }
-            }.runTaskLater(RPEssentials.getInstance(), ticks * (11 - rpPlayer.getStatLevel(Stats.Endurance)));
+            }.runTaskLater(RPEssentials.plugin, ticks * (11 - rpPlayer.getStatLevel(Stats.Endurance)));
         }
         return false;
     } // Samo wyleczenie
