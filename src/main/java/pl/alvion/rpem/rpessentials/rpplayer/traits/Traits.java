@@ -63,137 +63,132 @@ public enum Traits {
             RPPlayer.getRPPlayer(player).getPlayerTraits().add(trait);
         }
         switch (trait) {
-                case Gastrophase:
+            case Gastrophase:
 
-                    break;
-                case Smells:
+                break;
+            case Smells:
 
-                    break;
-                case Childish:
+                break;
+            case Childish:
 
-                    break;
-                case MusclesLikeRock:
+                break;
+            case MusclesLikeRock:
 
-                    break;
-                case Explosive:
+                break;
+            case Explosive:
 
-                    break;
-                case LittleOverWeight:
+                break;
+            case LittleOverWeight:
 
-                    break;
-                case Tattoo:
+                break;
+            case Tattoo:
 
-                    break;
-                case GoodMetabolism:
+                break;
+            case GoodMetabolism:
 
-                    break;
-                case Gambler:
+                break;
+            case Gambler:
 
-                    break;
-                case Unlucky:
+                break;
+            case Unlucky:
 
-                    break;
-                case Depression:
+                break;
+            case Depression:
 
-                    break;
-                case LeftHanded:
+                break;
+            case LeftHanded:
 
-                    break;
-                case Trauma:
+                break;
+            case Trauma:
 
-                    break;
-                case HighPitchVoice:
+                break;
+            case HighPitchVoice:
 
-                    break;
-                case Blindness:
+                break;
+            case Blindness:
 
-                    break;
-                case ThickSkin:
+                break;
+            case ThickSkin:
 
-                    break;
-                case TailMutation:
+                break;
+            case TailMutation:
 
-                    break;
-                case Alcoholic:
+                break;
+            case Alcoholic:
 
-                    break;
-                case Overweight:
+                break;
+            case Overweight:
 
-                    break;
-                case Vegan:
+                break;
+            case Vegan:
 
-                    break;
-                case BrokenBone:
+                break;
+            case BrokenBone:
 
-                    break;
-                case AmputatedLimb:
+                break;
+            case AmputatedLimb:
 
-                    break;
-                case ProstheticLimb:
+                break;
+            case ProstheticLimb:
 
-                    break;
-                case Lucky:
+                break;
+            case Lucky:
 
-                    break;
-                case BlackEyesMutation:
+                break;
+            case BlackEyesMutation:
 
-                    break;
-                case JaggedTeeth:
+                break;
+            case JaggedTeeth:
 
-                    break;
-                case LostTeeth:
+                break;
+            case LostTeeth:
 
-                    break;
-                case GoldTeeth:
+                break;
+            case GoldTeeth:
 
-                    break;
-                case HandSickness:
+                break;
+            case HandSickness:
 
-                    break;
-                case BeautifulVoice:
+                break;
+            case BeautifulVoice:
 
-                    break;
-                case Obese:
+                break;
+            case Obese:
 
-                    break;
-                case GillsMutation:
+                break;
+            case GillsMutation:
 
-                    break;
-                case Bald:
+                break;
+            case Bald:
 
-                    break;
-                case Meanders:
+                break;
+            case Meanders:
 
-                    break;
-                case EyeHeterochromia:
+                break;
+            case EyeHeterochromia:
 
-                    break;
-                case Voiceless:
+                break;
+            case Voiceless:
 
-                    break;
-                case CatEyes:
+                break;
+            case CatEyes:
 
-                    break;
-                case NoThumbs:
+                break;
+            case NoThumbs:
 
-                    break;
-                case AbsenceOfEye:
+                break;
+            case AbsenceOfEye:
 
-                    break;
-                case Light:
+                break;
+            case Light:
 
-                    break;
-                case ThirdPerson:
+                break;
+            case ThirdPerson:
 
-                    break;
-                case Leper:
+                break;
+            case Leper:
 
-                    break;
-            }
+                break;
+        }
     }
-
-
-
-
-
 }
