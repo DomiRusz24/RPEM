@@ -11,8 +11,38 @@ public enum Stats {
     Magic,
     Strength,
     MaxHP,
-    Medicine,
-    AvailableStatPoints;
+    AvailableStatPoints,
+    Melee(AttributeTypes.Offence),
+    AxeHandling(AttributeTypes.Offence),
+    SwordHandling(AttributeTypes.Offence),
+    ShieldHandling(AttributeTypes.Offence),
+    BowShooting(AttributeTypes.Offence),
+    Throwing(AttributeTypes.Offence),
+    MagicOne(AttributeTypes.Offence),
+    MagicTwo(AttributeTypes.Offence),
+    MagicThree(AttributeTypes.Offence),
+    Crafting(AttributeTypes.Crafts),
+    Alchemy(AttributeTypes.Crafts),
+    Smiting(AttributeTypes.Crafts),
+    Enchanting(AttributeTypes.Crafts),
+    Mining(AttributeTypes.Crafts),
+    WoodChopping(AttributeTypes.Crafts),
+    Farming(AttributeTypes.Crafts),
+    Breeding(AttributeTypes.Crafts),
+    Stealing(AttributeTypes.Crafts),
+    Medicine(AttributeTypes.Crafts),
+    Stamina(AttributeTypes.Body),
+    Resistance(AttributeTypes.Body),
+    Sneaking(AttributeTypes.Body);
+
+    private AttributeTypes type = null;
+
+    Stats(AttributeTypes type) {
+        this.type = type;
+    }
+
+    Stats() {
+    }
 
     public int getStat(RPPlayer RPplayer) {
         String path = "Player." + RPplayer.getPlayer().getName() + ".stats.";
@@ -34,5 +64,9 @@ public enum Stats {
         String path = "Player." + player.getName() + ".stats.";
         RPEssentials.getRPPlayerDataConfig().set(path + this.name(), value);
         RPEssentials.saveRPPlayerConfig();
+    }
+
+    public AttributeTypes getType() {
+        return type;
     }
 }
