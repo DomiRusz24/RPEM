@@ -1,9 +1,10 @@
 package pl.alvion.rpem.rpessentials.rpplayer;
 
-
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.health.PlayerHealth;
+import pl.alvion.rpem.rpessentials.rpplayer.attribute.Attribute;
 import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
 
@@ -26,15 +27,19 @@ public class RPPlayer {
     protected String conigPath;
     private double CurrentFractionHP;
     private ArrayList<Traits> playerTraits = new ArrayList<>();
+    private ArrayList<Attribute> playerAttributes = new ArrayList<>();
+    private PlayerHealth playerHealth;
+
     RPPlayer(Player player) {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
-        for(Stats statName : Stats.values()) {
-            statName.setStat(this, 0);
+        for(Stats stats : Stats.values()) {
+            stats.setStat(this, 0);
         }
         Stats.MaxHP.setStat(this, 2000);
         Stats.AvailableStatPoints.setStat(this, 2);
         RPPlayer.RPPlayers.add(this);
+        this.playerHealth = new PlayerHealth(this);
     }
 
     public Player getPlayer() {
@@ -52,11 +57,17 @@ public class RPPlayer {
         }
     }
 
+    public PlayerHealth getPlayerHealthStatus() {
+        return playerHealth;
+    }
 
     public double getCurrentHP() {  //// Oddaje gracza hp w systemie 2000
         return CurrentFractionHP + this.getPlayer().getHealth()*100;
     }
 
+    public ArrayList<Attribute> getPlayerAttributes() {
+        return playerAttributes;
+    }
 
     public void addTrait(Traits trait) {
         Traits.addPlayerTrait(this.player, trait, 0,0);
