@@ -1,11 +1,11 @@
-package pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable;
+package pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stat;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
 
 public class KnowledgePoints extends Stat {
 

@@ -1,11 +1,11 @@
-package pl.alvion.rpem.rpessentials.rpplayer;
+package pl.alvion.rpem.rpessentials.rpplayer_dr;
 
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
-import pl.alvion.rpem.rpessentials.rpplayer.traits.Traits;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.Traits;
 
 import java.util.ArrayList;
 

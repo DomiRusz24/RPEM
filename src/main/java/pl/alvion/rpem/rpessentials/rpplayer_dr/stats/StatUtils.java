@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.rpplayer.stats;
+package pl.alvion.rpem.rpessentials.rpplayer_dr.stats;
 
 public class StatUtils {
 
