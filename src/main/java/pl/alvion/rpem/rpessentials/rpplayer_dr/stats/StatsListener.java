@@ -1,9 +1,9 @@
-package pl.alvion.rpem.rpessentials.rpplayer.stats;
+package pl.alvion.rpem.rpessentials.rpplayer_dr.stats;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginEnableEvent;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable.*;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable.*;
 
 public class StatsListener implements Listener {
 

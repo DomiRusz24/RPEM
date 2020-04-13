@@ -1,7 +1,7 @@
-package pl.alvion.rpem.rpessentials.rpplayer.traits;
+package pl.alvion.rpem.rpessentials.rpplayer_dr.traits;
 
 import org.bukkit.entity.Player;
-import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
 
 public enum Traits {
     Gastrophase("Gastrofaza"),

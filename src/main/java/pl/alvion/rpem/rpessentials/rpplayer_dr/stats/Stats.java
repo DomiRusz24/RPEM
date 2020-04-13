@@ -1,8 +1,8 @@
-package pl.alvion.rpem.rpessentials.rpplayer.stats;
+package pl.alvion.rpem.rpessentials.rpplayer_dr.stats;
 
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
-import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
 
 public enum Stats {
     Agility,
