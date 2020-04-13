@@ -9,7 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import pl.alvion.rpem.rpessentials.generalutils.gui.GUI;
-import pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable.*;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable.*;
 
 import java.util.ArrayList;
 import java.util.Random;
