@@ -1,5 +1,6 @@
 package pl.alvion.rpem.rpessentials.generalutils.gui;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -20,7 +21,6 @@ public class GUIListener implements Listener {
         if (event.getClickedInventory() == null) return;
         if (lockedInventories.contains(event.getClickedInventory())) event.setCancelled(true);
         RandomStats.clickEvent(event);
-
     }
 
     @EventHandler
