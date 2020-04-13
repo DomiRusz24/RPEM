@@ -18,8 +18,11 @@ public class GUIListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
-        if (lockedInventories.contains(event.getClickedInventory())) event.setCancelled(true);
-        RandomStats.clickEvent(event);
+        if (lockedInventories.contains(event.getClickedInventory())) {
+            event.setCancelled(true);
+            RandomStats.clickEvent(event);
+            return;
+        }
 
     }
 
