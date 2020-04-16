@@ -5,9 +5,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import pl.alvion.rpem.rpessentials.generalutils.gui.GUI;
-import pl.alvion.rpem.rpessentials.generalutils.gui.guis.RandomStats;
-import pl.alvion.rpem.rpessentials.generalutils.names.Names;
+import pl.alvion.rpem.rpessentials.utils.gui.GUI;
+import pl.alvion.rpem.rpessentials.utils.gui.guis.RandomStats;
+import pl.alvion.rpem.rpessentials.utils.names.Names;
 
 public class GeneralDebugCommand implements CommandExecutor {
     @Override
@@ -24,6 +24,7 @@ public class GeneralDebugCommand implements CommandExecutor {
 
         GUI gui = new RandomStats();
         gui.open(player);
+
 
         return false;
     }

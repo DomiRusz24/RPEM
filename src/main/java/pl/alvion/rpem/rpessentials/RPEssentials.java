@@ -6,7 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
-import pl.alvion.rpem.rpessentials.generalutils.gui.GUIListener;
+import pl.alvion.rpem.rpessentials.utils.gui.GUIListener;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayerListener;
 
 import java.io.File;
@@ -21,7 +21,7 @@ public final class RPEssentials extends JavaPlugin {
     @Override
     public void onEnable() {
         System.out.println("AlvionRP core zostalo uruchomione");
-        createRPPlayerDataConfig();
+        //createRPPlayerDataConfig();
         plugin = this;
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);

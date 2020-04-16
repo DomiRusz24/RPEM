@@ -4,6 +4,9 @@ import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public enum Stats {
     Agility,
     Endurance,
@@ -65,6 +68,10 @@ public enum Stats {
         RPEssentials.getRPPlayerDataConfig().set(path + this.name(), value);
         RPEssentials.saveRPPlayerConfig();
     }
+
+
+
+
 
     public AttributeTypes getType() {
         return type;

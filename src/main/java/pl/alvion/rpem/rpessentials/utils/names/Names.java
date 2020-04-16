@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.generalutils.names;
+package pl.alvion.rpem.rpessentials.utils.names;
 
 import org.bukkit.ChatColor;
 
