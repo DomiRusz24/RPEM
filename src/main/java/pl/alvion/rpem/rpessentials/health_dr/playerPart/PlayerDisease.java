@@ -35,7 +35,7 @@ public abstract class PlayerDisease {
     }
 
     public boolean recoverTime(int ticks, RPPlayer rpPlayer, boolean selfHealed) { // Wyleczenie po playerze
-        if(this instanceof HealableInjury && !this.isHealing) {
+        if (this instanceof HealableInjury && !this.isHealing) {
             isHealing = true;
             ((HealableInjury) this).heal(HealingStages.Start, rpPlayer.getPlayersMedicalChance());
             new BukkitRunnable() {
@@ -55,7 +55,7 @@ public abstract class PlayerDisease {
     }
 
     public boolean recoverTime(int ticks) { // Samo wyleczenie po czasie.
-        if(this instanceof HealableInjury && !this.isHealing) {
+        if (this instanceof HealableInjury && !this.isHealing) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -79,7 +79,6 @@ public abstract class PlayerDisease {
     } // Samo wyleczenie
 
     abstract public Material getMaterialType(); // Ikonka na GUI
+
     abstract public void run(RPPlayer rpPlayer, double intensity); // Efekty urazy
-    abstract public int regenerationTimeMax(); // Maksymalny czas wyzdrowienia
-    abstract public int healingLevelMin(); // Minimalny level leczenia
 }

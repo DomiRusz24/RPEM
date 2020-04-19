@@ -143,7 +143,7 @@ public abstract class PlayerBodyPart {
         }
         switch (injury) {
             case Scratch:
-                new Scratch(this, intensity);
+
                 break;
             case Scar:
 
@@ -181,7 +181,7 @@ public abstract class PlayerBodyPart {
         }
         switch (injury) {
             case Scratch:
-                new Scratch(this, intensity);
+
                 break;
             case Scar:
 
@@ -219,7 +219,7 @@ public abstract class PlayerBodyPart {
         }
         switch (injury) {
             case Scratch:
-                new Scratch(this, intensity);
+
                 break;
             case Scar:
 

@@ -97,6 +97,4 @@ public abstract class PlayerOrganInjury {
 
     abstract public Material getMaterialType(); // Ikonka na GUI
     abstract public void run(RPPlayer rpPlayer, double intensity); // Efekty urazy
-    abstract public int regenerationTimeMax(); // Maksymalny czas wyzdrowienia
-    abstract public int healingLevelMin(); // Minimalny level leczenia
 }
