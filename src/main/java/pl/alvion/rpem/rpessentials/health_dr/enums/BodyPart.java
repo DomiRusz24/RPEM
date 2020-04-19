@@ -24,6 +24,14 @@ public enum BodyPart {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getPolishIdentification() {
+        return PolishIdentification;
+    }
+
     public static Boolean checkBodyPartFromID(int id) {
         for (BodyPart bodyPart : BodyPart.values()) {
             if (bodyPart.id == id) {

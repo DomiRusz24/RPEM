@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.health_dr.PlayerHealth;
+import pl.alvion.rpem.rpessentials.health_dr.playerPart.PlayerDisease;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.Traits;
 

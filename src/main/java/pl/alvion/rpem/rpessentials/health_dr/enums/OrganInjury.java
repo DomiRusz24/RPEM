@@ -17,6 +17,14 @@ public enum OrganInjury {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getPolishIdentification() {
+        return PolishIdentification;
+    }
+
     public static Boolean checkOrganInjuryFromID(int id) {
         for (OrganInjury organInjury : OrganInjury.values()) {
             if (organInjury.id == id) {

@@ -3,6 +3,7 @@ package pl.alvion.rpem.rpessentials.health_dr;
 import pl.alvion.rpem.rpessentials.health_dr.enums.BodyPart;
 import pl.alvion.rpem.rpessentials.health_dr.enums.Organ;
 import pl.alvion.rpem.rpessentials.health_dr.playerPart.PlayerBodyPart;
+import pl.alvion.rpem.rpessentials.health_dr.playerPart.PlayerDisease;
 import pl.alvion.rpem.rpessentials.health_dr.playerPart.PlayerOrgan;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
 
@@ -14,6 +15,7 @@ public class PlayerHealth {
     private RPPlayer rpPlayer;
     private ArrayList<PlayerBodyPart> playerBodyParts = new ArrayList<>();
     private ArrayList<PlayerOrgan> playerOrgans = new ArrayList<>();
+    private ArrayList<PlayerDisease> infenctions = new ArrayList<>();
 
     public PlayerHealth(RPPlayer rpPlayer) {
         this.rpPlayer = rpPlayer;
@@ -43,6 +45,10 @@ public class PlayerHealth {
 
     public ArrayList<PlayerOrgan> getPlayerOrgans() {
         return playerOrgans;
+    }
+
+    public ArrayList<PlayerDisease> getInfenctions() {
+        return infenctions;
     }
 
     public RPPlayer getRpPlayer() {

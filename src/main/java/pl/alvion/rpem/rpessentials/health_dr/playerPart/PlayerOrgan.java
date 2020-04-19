@@ -17,7 +17,7 @@ public abstract class PlayerOrgan {
     public static PlayerOrgan addPlayerOrgan(RPPlayer rpPlayer, Organ organ) {
         switch (organ) {
             case Brain:
-                return new Brain(rpPlayer);
+
             case Heart:
 
                 break;
@@ -124,7 +124,7 @@ public abstract class PlayerOrgan {
 
                 break;
             case Inefficient:
-                new Inefficient(this, intensity);
+
                 break;
         }
         return false;

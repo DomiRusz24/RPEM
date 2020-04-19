@@ -20,6 +20,14 @@ public enum BodyPartInjury {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getPolishIdentification() {
+        return PolishIdentification;
+    }
+
     public static Boolean checkBodyPartInjuryFromID(int id) {
         for (BodyPartInjury bodyPartInjury : BodyPartInjury.values()) {
             if (bodyPartInjury.id == id) {

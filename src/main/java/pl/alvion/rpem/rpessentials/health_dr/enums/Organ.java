@@ -14,6 +14,14 @@ public enum Organ {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getPolishIdentification() {
+        return PolishIdentification;
+    }
+
     public static Boolean checkOrganFromID(int id) {
         for (Organ organ : Organ.values()) {
             if (organ.id == id) {
