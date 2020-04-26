@@ -45,7 +45,20 @@ public enum Traits {
     AbsenceOfEye("BrakOka"),
     Light("Lekki"),
     ThirdPerson("TrzeciaOsoba"),
-    Leper("Tredowaty");
+    Leper("Tredowaty"),
+    Talassophobia("Talassofobia"),
+    Achluophobia("Achluofobia"),
+    Pyrophobia("Pyrofobia"),
+    Agliophobia("Agliofobia"),
+    Ekuinophobia("Ekuinofobia"),
+    Skelerophobia("Skelerofobia"),
+    Batmophobia("Batmofobia"),
+    Tanatophobia("Tanatofobia"),
+    Agrizoophobia("Agrizoofobia"),
+    Linophobia("Linofobia"),
+    Deaf("Gluchy"),
+    SingsBad("FalszujeSpiewajac");
+
 
     private String PolishIndex;
 
@@ -64,130 +77,112 @@ public enum Traits {
         }
         switch (trait) {
             case Gastrophase:
-
                 break;
             case Smells:
-
                 break;
             case Childish:
-
                 break;
             case MusclesLikeRock:
-
                 break;
             case Explosive:
-
                 break;
             case LittleOverWeight:
-
                 break;
             case Tattoo:
-
                 break;
             case GoodMetabolism:
-
                 break;
             case Gambler:
-
                 break;
             case Unlucky:
-
                 break;
             case Depression:
-
                 break;
             case LeftHanded:
-
                 break;
             case Trauma:
-
                 break;
             case HighPitchVoice:
-
                 break;
             case Blindness:
-
                 break;
             case ThickSkin:
-
                 break;
             case TailMutation:
-
                 break;
             case Alcoholic:
-
                 break;
             case Overweight:
-
                 break;
             case Vegan:
-
                 break;
             case BrokenBone:
-
                 break;
             case AmputatedLimb:
-
                 break;
             case ProstheticLimb:
-
-                break;
-            case Lucky:
-
-                break;
-            case BlackEyesMutation:
-
-                break;
-            case JaggedTeeth:
-
-                break;
-            case LostTeeth:
-
-                break;
-            case GoldTeeth:
-
                 break;
             case HandSickness:
-
+                break;
+            case Lucky:
+                break;
+            case BlackEyesMutation:
+                break;
+            case JaggedTeeth:
+                break;
+            case LostTeeth:
+                break;
+            case GoldTeeth:
                 break;
             case BeautifulVoice:
-
                 break;
             case Obese:
-
                 break;
             case GillsMutation:
-
                 break;
             case Bald:
-
                 break;
             case Meanders:
-
                 break;
             case EyeHeterochromia:
-
                 break;
             case Voiceless:
-
                 break;
             case CatEyes:
-
                 break;
             case NoThumbs:
-
                 break;
             case AbsenceOfEye:
-
                 break;
             case Light:
-
                 break;
             case ThirdPerson:
-
                 break;
             case Leper:
-
+                break;
+            case Talassophobia:
+                break;
+            case Achluophobia:
+                break;
+            case Pyrophobia:
+                break;
+            case Agliophobia:
+                break;
+            case Ekuinophobia:
+                break;
+            case Skelerophobia:
+                break;
+            case Batmophobia:
+                break;
+            case Tanatophobia:
+                break;
+            case Agrizoophobia:
+                break;
+            case Linophobia:
+                break;
+            case Deaf:
+                break;
+            case SingsBad:
                 break;
         }
     }
