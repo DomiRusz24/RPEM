@@ -10,15 +10,21 @@ public class LockedDoor {
 
     private Block door;
 
-    private ArrayList<Key> keys = new ArrayList<>();
+    private Key key;
 
 
-    public LockedDoor(Block door) {
+    public LockedDoor(Block door, Key key) {
         this.door = door;
+        this.key = key;
+        lockedDoors.add(this);
     }
 
-    public void addKey(Key key) {
+    public void setKey(Key key) {
+        this.key = key;
+    }
 
+    public Key getKey() {
+        return key;
     }
 
     public Block getDoor() {
