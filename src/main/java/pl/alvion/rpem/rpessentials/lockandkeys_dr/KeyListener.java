@@ -1,5 +1,6 @@
 package pl.alvion.rpem.rpessentials.lockandkeys_dr;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Door;
@@ -8,8 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
 
 public class KeyListener implements Listener {
 
@@ -34,10 +38,19 @@ public class KeyListener implements Listener {
                     if (player.isSneaking() && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                         if (Key.getKeyByID(meta.getLore().get(0)) != null) {
                             new LockedDoor(block, Key.getKeyByID(meta.getLore().get(0)));
+                        } else if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.BOLD + "" + ChatColor.ITALIC + "Klamko-Usuwacz9000")) {
+                            LockedDoor.lockedDoors.removeIf(lockedDoor -> lockedDoor.getDoor() == block);
                         }
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onDestroy(BlockBreakEvent event) {
+        if (event.getBlock() instanceof Door || event.getBlock() instanceof TrapDoor) {
+            LockedDoor.lockedDoors.removeIf(door -> door.getDoor().equals(event.getBlock()));
         }
     }
 

@@ -16,6 +16,13 @@ public class Key {
         return UUID.randomUUID().toString().replace("-", "");
     }
 
+    public static void giveLockRemover(Player player) {
+        ItemStack item = new ItemStack(Material.IRON_HOE);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.BOLD + "" + ChatColor.ITALIC + "Klamko-Usuwacz9000");
+        item.setItemMeta(meta);
+        player.getInventory().addItem(item);
+    }
 
 
     public static ArrayList<Key> keys = new ArrayList<>();
@@ -35,6 +42,7 @@ public class Key {
                 cantSet = false;
             }
         }
+
         keys.add(this);
         giveKey(player);
     }
