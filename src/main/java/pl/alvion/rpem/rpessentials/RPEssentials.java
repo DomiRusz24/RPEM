@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
+import pl.alvion.rpem.rpessentials.magic.elemental.listeners.ElementalListener;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.TraitsListener;
 import pl.alvion.rpem.rpessentials.utils.gui.GUIListener;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayerListener;
@@ -27,6 +28,7 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
         Bukkit.getPluginManager().registerEvents(new TraitsListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ElementalListener(), this);
         Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
 
     }
