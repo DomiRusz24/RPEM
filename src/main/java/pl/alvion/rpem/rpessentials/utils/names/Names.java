@@ -8,6 +8,10 @@ public class Names {
         return ChatColor.BLUE + "" + ChatColor.BOLD + "[" + ChatColor.BLUE + "AlvionRP" + ChatColor.BOLD + "]";
     }
 
+    public static String randomizeGUI() {
+        return ChatColor.BLUE + "Losowanie Statystyk";
+    }
+
     public static String getMagicDataPath(Player player) {
         return "Magic." + player.getName() + ".Data";
     }

@@ -2,16 +2,16 @@ package pl.alvion.rpem.rpessentials.utils.statutils;
 
 
 import org.bukkit.inventory.ItemStack;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class RandomStatsGuiItemParser {
 
     public static HashMap<Stats, Integer> itemToStats(ItemStack itemStack) {
         HashMap<Stats, Integer> hashMap = new HashMap<>();
-        if (itemStack.getItemMeta() == null) return null;
         List<String> lore = itemStack.getItemMeta().getLore();
         if (lore == null) return null;
         hashMap.put(Stats.Agility, Integer.parseInt(lore.get(0).split(": ")[1]));

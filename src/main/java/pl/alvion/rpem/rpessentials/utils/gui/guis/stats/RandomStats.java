@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.utils.gui.guis;
+package pl.alvion.rpem.rpessentials.utils.gui.guis.stats;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,7 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import pl.alvion.rpem.rpessentials.utils.gui.GUI;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable.*;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable.*;
 import pl.alvion.rpem.rpessentials.utils.gui.GUIListener;
 import pl.alvion.rpem.rpessentials.utils.gui.GuiUtils;
 
