@@ -4,6 +4,7 @@ package pl.alvion.rpem.rpessentials.rpplayer_dr;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.enums.PlayerHealth;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.Traits;
 
@@ -29,11 +30,18 @@ public class RPPlayer {
     RPPlayer(Player player) {
         this.player = player;
         conigPath = "Player." + this.player.getDisplayName();
+
         for(Stats statName : Stats.values()) {
             statName.setStat(this, 0);
         }
+
         Stats.MaxHP.setStat(this, 2000);
         Stats.AvailableStatPoints.setStat(this, 2);
+
+        for(PlayerHealth health : PlayerHealth.values()) {
+            health.setPlayerEfficiency(this, 100);
+        }
+
         RPPlayer.RPPlayers.add(this);
     }
 
