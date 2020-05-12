@@ -10,7 +10,12 @@ public enum BodyPartInjury {
     Amputation("Amputacja", 6),
     Wound("Rana", 7),
     Burn("Poparzenie", 8),
-    Inefficient("NieSprawny", 9);
+    // Body part and organ
+    Inefficient("NieSprawny", 9),
+    // Organ only
+    TotalFailure("CalkowitaAwaria", 10),
+    InternalBleed("Krwawienie", 11),
+    RippedOut("Wyrwane", 12);
 
     protected String PolishIdentification;
     protected int id;

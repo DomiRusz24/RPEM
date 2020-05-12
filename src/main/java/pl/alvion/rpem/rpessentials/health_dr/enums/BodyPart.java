@@ -13,7 +13,11 @@ public enum BodyPart {
     Head("Glowa", 9),
     Neck("Szyja", 10),
     LeftEye("LeweOko", 11),
-    RightEye("PraweOko", 12);
+    RightEye("PraweOko", 12),
+    Brain("Mozg", 13),
+    Heart("Serce", 14),
+    Lungs("Pluca", 15),
+    Stomach("Zoladek", 16);
 
 
     protected String PolishIdentification;

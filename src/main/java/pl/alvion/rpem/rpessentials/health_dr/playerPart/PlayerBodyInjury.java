@@ -14,6 +14,7 @@ public abstract class PlayerBodyInjury {
     private PlayerBodyPart bodyPart;
     private RPPlayer rpPlayer;
     private double intensity;
+    private double efficiency = 100;
     private PlayerBodyInjury instance = this;
 
     public PlayerBodyInjury(PlayerBodyPart part, int Intensity) {
@@ -21,7 +22,11 @@ public abstract class PlayerBodyInjury {
         this.rpPlayer = getBodyPart().getRpPlayer();
         this.intensity = Intensity;
         this.bodyPart.getInjuries().add(this);
-        run(rpPlayer, intensity * part.BodyPartComplexity() * 0.1);
+        run((intensity * 0.1) + (part.BodyPartComplexity() * 0.1) + (efficiency / 100));
+    }
+
+    public double getEfficiency() {
+        return efficiency;
     }
 
     public PlayerBodyPart getBodyPart() {
@@ -30,7 +35,7 @@ public abstract class PlayerBodyInjury {
 
     public double getIntensity() {
         return intensity;
-    } // Mnoznik obrazen, czasu trwania itd.
+    } // Mnoznik obrazen, czasu trwania itd. (1 - 10)
 
     public RPPlayer getRpPlayer() {
         return rpPlayer;
@@ -50,18 +55,26 @@ public abstract class PlayerBodyInjury {
         return isHealing;
     }
 
+    public void lowerEfficiency(int value) {
+        efficiency -= value;
+        if (efficiency <= 0 ) {
+            efficiency = 0;
+            this.bodyPart.getInjuries().remove(this);
+        }
+    }
+
     public boolean recoverTime(int ticks, RPPlayer rpPlayer, boolean selfHealed) { // Wyleczenie po playerze
         if(this instanceof HealableInjury && !this.isHealing) {
             isHealing = true;
-            ((HealableInjury) this).heal(HealingStages.Start, rpPlayer.getPlayersMedicalChance());
+            efficiency -= 20;
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    ((HealableInjury) instance).heal(HealingStages.Healed, rpPlayer.getPlayersMedicalChance());
+                    efficiency -= 40;
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            ((HealableInjury) instance).healFully();
+                            efficiency -= 40;
                         }
                     }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
                 }
@@ -71,19 +84,19 @@ public abstract class PlayerBodyInjury {
     }
 
     public boolean recoverTime(int ticks) { // Samo wyleczenie po czasie.
-        if(this instanceof HealableInjury && !this.isHealing) {
+        if(this instanceof HealableInjury) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    ((HealableInjury) instance).heal(HealingStages.Start, rpPlayer.getPlayersMedicalChance());
+                    efficiency -= 20;
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            ((HealableInjury) instance).heal(HealingStages.Healed, rpPlayer.getPlayersMedicalChance());
+                            efficiency -= 40;
                             new BukkitRunnable() {
                                 @Override
                                 public void run() {
-                                    ((HealableInjury) instance).healFully();
+                                    efficiency -= 40;
                                 }
                             }.runTaskLater(RPEssentials.plugin, (long) (((HealableInjury) instance).regenerationTimeMax() * rpPlayer.getPlayersMedicalChance()) / 10);
                         }
@@ -95,6 +108,8 @@ public abstract class PlayerBodyInjury {
     } // Samo wyleczenie
 
     abstract public Material getMaterial(); // Ikonka na GUI
-    abstract public void run(RPPlayer rpPlayer, double intensity); // Efekty urazy
+    public void run(double intensity) {
+        this.bodyPart.lowerEfficiency((int) Math.round(intensity));
+    }
 
 }

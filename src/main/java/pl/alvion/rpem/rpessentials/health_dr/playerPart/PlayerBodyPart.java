@@ -50,6 +50,7 @@ public abstract class PlayerBodyPart {
     private RPPlayer rpPlayer;
     private Player player;
     public ArrayList<PlayerBodyInjury> injuries = new ArrayList<>();
+    private double PartEfficiency = 100;
     private int bleedIntensity = 0;
 
     public PlayerBodyPart(RPPlayer rpPlayer) {
@@ -75,8 +76,12 @@ public abstract class PlayerBodyPart {
         return bleedIntensity;
     }
 
+    public double getPartEfficiency() {
+        return PartEfficiency;
+    }
+
     public boolean increaseBleedIntensity(int value) {
-        if (this instanceof BleedableBodyPart) {
+        if (this instanceof BleedableBodyPart && !amputated) {
             bleedIntensity = bleedIntensity + value;
         }
         return false;
@@ -92,13 +97,12 @@ public abstract class PlayerBodyPart {
 
     private boolean amputated = false;
 
-    private boolean removed = false;
-
-    public boolean isRemoved() {
-        return removed;
+    private void removePart() {
+        this.PartEfficiency = 0;
+        for (PlayerBodyInjury injury : new ArrayList<>(this.injuries)) {
+            this.injuries.remove(injury);
+        }
     }
-
-    public abstract void removePart();
 
     public boolean isAmputated() {
         return amputated;
@@ -107,6 +111,7 @@ public abstract class PlayerBodyPart {
     public boolean amputate() {
         if(this instanceof Amputable) {
             ((Amputable) this).onAmputate();
+            removePart();
             amputated = true;
             return true;
         }
@@ -114,7 +119,7 @@ public abstract class PlayerBodyPart {
     } // Amputuj ta czesc.
 
     public boolean infectPart(double value, InfectionStage stage) {
-        if(this instanceof InfectableBodyPart) {
+        if(this instanceof InfectableBodyPart && !amputated) {
             switch (stage) {
                 case Low:
                     ((InfectableBodyPart) this).onInfectStage1(value);
@@ -137,8 +142,24 @@ public abstract class PlayerBodyPart {
         return injuries;
     }
 
+    public void lowerEfficiency(int value) {
+        this.PartEfficiency -= value;
+        if (PartEfficiency < 0 ) {
+            PartEfficiency = 0;
+        }
+        refreshEfficiency(this.getPartEfficiency());
+    }
+
+    public void raiseEfficiency(int value, boolean upgrade) {
+        this.PartEfficiency += value;
+        if (PartEfficiency > 100 && !upgrade) {
+            PartEfficiency = 100;
+        }
+        refreshEfficiency(this.getPartEfficiency());
+    }
+
     public boolean addInjury(BodyPartInjury injury, int intensity, int input1, int input2) {
-        if(incapableInjuries().contains(injury)) {
+        if(incapableInjuries().contains(injury) && !amputated) {
             return false;
         }
         switch (injury) {
@@ -176,7 +197,7 @@ public abstract class PlayerBodyPart {
         return false;
     } // Rozne urazy moga miec dodatkowe inputy
     public boolean addInjury(BodyPartInjury injury, int intensity, int input1) {
-        if(incapableInjuries().contains(injury)) {
+        if(incapableInjuries().contains(injury) && !amputated) {
             return false;
         }
         switch (injury) {
@@ -214,7 +235,7 @@ public abstract class PlayerBodyPart {
         return false;
     } // Rozne urazy moga miec dodatkowe inputy
     public boolean addInjury(BodyPartInjury injury, int intensity) {
-        if(incapableInjuries().contains(injury)) {
+        if(incapableInjuries().contains(injury) && !amputated) {
             return false;
         }
         switch (injury) {
@@ -254,6 +275,7 @@ public abstract class PlayerBodyPart {
 
 
     abstract public BodyPart bodyPart(); // Jaka czesc ciala
+    abstract public void refreshEfficiency(double efficiency); // Co to ten czlonek robi.
     abstract public int BodyPartComplexity(); // Trudnosc wyleczenia tego czlonku (1 - 10)
     abstract public ArrayList<BodyPartInjury> incapableInjuries(); // Jakie urazy nie moze dostac.
 }
