@@ -5,6 +5,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.alvion.rpem.rpessentials.birdletter.JoinPlayerEvent;
+import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
+import pl.alvion.rpem.rpessentials.birdletter.letter.send;
 import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
 import pl.alvion.rpem.rpessentials.magic.elemental.listeners.ElementalListener;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.TraitsListener;
@@ -30,6 +33,14 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new TraitsListener(), this);
         Bukkit.getPluginManager().registerEvents(new ElementalListener(), this);
         Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
+
+        //BirdLetter
+        Bukkit.getServer().getPluginManager().registerEvents(new send(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinPlayerEvent(), this);
+        getCommand("postman").setExecutor(new send());
+          //BLData
+        BLData.setup();
+        BLData.save();
 
     }
 

@@ -7,3 +7,4 @@ description: Plugin AlvionRP Core.
 commands:
   GDC:
     description: General debug command
+  postman:
