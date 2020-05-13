@@ -38,6 +38,7 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new send(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new JoinPlayerEvent(), this);
         getCommand("postman").setExecutor(new send());
+        getCommand("postmanplayer").setExecutor(new send());
           //BLData
         BLData.setup();
         BLData.save();

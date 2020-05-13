@@ -8,3 +8,4 @@ commands:
   GDC:
     description: General debug command
   postman:
+  postmanplayer:

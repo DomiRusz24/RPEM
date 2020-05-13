@@ -1,5 +1,6 @@
 package pl.alvion.rpem.rpessentials.birdletter.letter;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -8,9 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
+import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
 
 public class send implements Listener, CommandExecutor {
@@ -21,17 +25,29 @@ public class send implements Listener, CommandExecutor {
         if (command.getName().equalsIgnoreCase("postman")) {
             if (commandSender.hasPermission("BirdLetterOP")) {
                 n = 1;
-                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&lWciągu 5 sekund wpisz nazwę gracza."));
-            }else {
-                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy."));
-            }
+            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
+        }
+        if (command.getName().equalsIgnoreCase("postmanplayer")) {
+            if (n == 1) {
+                Player p = (Player) commandSender;
+                Inventory BirdGUI = Bukkit.createInventory(p, 9, "Nazwa");
+
+                p.openInventory(BirdGUI);
+            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
+
         }
         return false;
     }
 
+    public static void GUI(InventoryClickEvent e) {
+        if (n == 1) {
+
+        }
+    }
+
     @EventHandler
     public void SaveLetter(AsyncPlayerChatEvent e) {
-        if (n == 1) {
+        if (n == 2) {
             e.setCancelled(true);
             Player p = e.getPlayer();
             int number = BLData.get().getConfigurationSection(e.getMessage() + ".Lists.").getKeys(false).size() + 1;
