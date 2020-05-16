@@ -1,12 +1,12 @@
 package pl.alvion.rpem.rpessentials.rpplayer_dr.enums;
 
-import javafx.print.PageLayout;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
 
-public enum PlayerHealth {
+public enum PlayerHealthEnum {
     Pain("Bol", 0),
     Consciousness("Swiadomosc", 1),
     Sight("Wzrok", 2),
@@ -24,7 +24,7 @@ public enum PlayerHealth {
     private int ID;
 
 
-    PlayerHealth(String PolishID, int ID) {
+    PlayerHealthEnum(String PolishID, int ID) {
         this.PolishID = PolishID;
         this.ID = ID;
     }
@@ -37,8 +37,8 @@ public enum PlayerHealth {
         return PolishID;
     }
 
-    public static PlayerHealth getPlayerHealthByID(int ID) {
-        for (PlayerHealth i : PlayerHealth.values()) {
+    public static PlayerHealthEnum getPlayerHealthByID(int ID) {
+        for (PlayerHealthEnum i : PlayerHealthEnum.values()) {
             if (i.getID() == ID) {
                 return i;
             }
@@ -68,17 +68,56 @@ public enum PlayerHealth {
         RPEssentials.saveRPPlayerConfig();
     }
 
+    // Static - maksymalna wartosc
+
+    public void setPlayerStaticEfficiency(RPPlayer RPplayer, int value) {
+        String path = "Player." + RPplayer.getPlayer().getName() + ".healthInfo.static";
+        RPEssentials.getRPPlayerDataConfig().set(path + this.name(), value);
+        RPEssentials.saveRPPlayerConfig();
+    }
+
+    public void setPlayerStaticEfficiency(Player player, int value) {
+        String path = "Player." + player.getName() + ".healthInfo.static";
+        RPEssentials.getRPPlayerDataConfig().set(path + this.name(), value);
+        RPEssentials.saveRPPlayerConfig();
+    }
+
+    public int getPlayerStaticEfficiency(RPPlayer RPplayer) {
+        String path = "Player." + RPplayer.getPlayer().getName() + ".healthInfo.static";
+        return RPEssentials.getRPPlayerDataConfig().getInt(path + this.name());
+    }
+    public int getPlayerStaticEfficiency(Player player) {
+        String path = "Player." + player.getName() + ".healthInfo.static";
+        return RPEssentials.getRPPlayerDataConfig().getInt(path + this.name());
+    }
+
     public static void refreshPlayerHealth(Player player) {
-        for (PlayerHealth info : PlayerHealth.values()) {
+        for (PlayerHealthEnum info : PlayerHealthEnum.values()) {
             int efficiency = info.getPlayerEfficiency(player);
             switch (info) {
                 case Pain:
                     break;
                 case Consciousness:
+                    double consciousness = ((PlayerHealthEnum.Pain.getPlayerEfficiency(player) - 0.1) * 4 / 9)
+                            * (1 - 0.2 * (1 - PlayerHealthEnum.BloodPumping.getPlayerEfficiency(player) * 0.01))
+                            * (1 - 0.2 * (1 - PlayerHealthEnum.Breathing.getPlayerEfficiency(player) * 0.01))
+                            * (1 - 0.1 * (1 - PlayerHealthEnum.BloodFiltration.getPlayerEfficiency(player) * 0.01));
+                    info.setPlayerEfficiency(player, (int) Math.round(consciousness));
+                    if (consciousness < 30) {
+                        // zmdlenie
+                    } else if (consciousness < 1 ) {
+                        // dead
+                    }
                     break;
                 case Sight:
+                    if (efficiency < 1) {
+                        // slepota
+                    }
                     break;
                 case Hearing:
+                    if (efficiency < 5) {
+                        // gluchy
+                    }
                     break;
                 case Moving:
                     player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.2 * (efficiency * 0.01));
@@ -87,14 +126,29 @@ public enum PlayerHealth {
                     player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue((3.0 * (efficiency * 0.01)) + 1.0);
                     break;
                 case Talking:
+                    if (efficiency < 5) {
+                        // niemowa
+                    }
                     break;
                 case Breathing:
+                    if (efficiency < 1) {
+                        // dead
+                    }
                     break;
                 case BloodFiltration:
+                    if (efficiency < 20) {
+                        // dead
+                    }
                     break;
                 case BloodPumping:
+                    if (efficiency < 10) {
+                        // dead
+                    }
                     break;
                 case Metabolism:
+                    if (efficiency < 10) {
+                        // nie moze zrec
+                    }
                     break;
             }
 

@@ -4,7 +4,7 @@ package pl.alvion.rpem.rpessentials.rpplayer_dr;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.enums.PlayerHealth;
+import pl.alvion.rpem.rpessentials.rpplayer_dr.enums.PlayerHealthEnum;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.Traits;
 
@@ -38,8 +38,9 @@ public class RPPlayer {
         Stats.MaxHP.setStat(this, 2000);
         Stats.AvailableStatPoints.setStat(this, 2);
 
-        for(PlayerHealth health : PlayerHealth.values()) {
+        for(PlayerHealthEnum health : PlayerHealthEnum.values()) {
             health.setPlayerEfficiency(this, 100);
+            health.setPlayerStaticEfficiency(this, 100);
         }
 
         RPPlayer.RPPlayers.add(this);
@@ -84,6 +85,14 @@ public class RPPlayer {
 
     public void setStatLevel(Stats stat, int value) {
         stat.setStat(this, value);
+    }
+
+    public void getPlayerHealthValue(PlayerHealthEnum healthEnum) {
+        healthEnum.getPlayerEfficiency(this);
+    }
+
+    public void setPlayerHealthValue(PlayerHealthEnum healthEnum, int value) {
+        healthEnum.setPlayerEfficiency(this, value);
     }
 
     public ArrayList<Traits> getPlayerTraits() {
