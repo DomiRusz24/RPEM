@@ -94,6 +94,9 @@ public enum PlayerHealthEnum {
     public static void refreshPlayerHealth(Player player) {
         for (PlayerHealthEnum info : PlayerHealthEnum.values()) {
             int efficiency = info.getPlayerEfficiency(player);
+            if (efficiency > info.getPlayerStaticEfficiency(player)) {
+                info.setPlayerEfficiency(player, info.getPlayerStaticEfficiency(player));
+            }
             switch (info) {
                 case Pain:
                     break;
