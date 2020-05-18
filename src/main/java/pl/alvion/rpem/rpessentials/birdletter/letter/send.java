@@ -1,5 +1,6 @@
 package pl.alvion.rpem.rpessentials.birdletter.letter;
 
+import javafx.geometry.Pos;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,40 +15,13 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
-import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.birdletter.Postman;
 import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
 
-public class send implements Listener, CommandExecutor {
-    private static int n = 0;
-
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (command.getName().equalsIgnoreCase("postman")) {
-            if (commandSender.hasPermission("BirdLetterOP")) {
-                n = 1;
-            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
-        }
-        if (command.getName().equalsIgnoreCase("postmanplayer")) {
-            if (n == 1) {
-                Player p = (Player) commandSender;
-                Inventory BirdGUI = Bukkit.createInventory(p, 9, "Nazwa");
-
-                p.openInventory(BirdGUI);
-            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
-
-        }
-        return false;
-    }
-
-    public static void GUI(InventoryClickEvent e) {
-        if (n == 1) {
-
-        }
-    }
-
+public class send implements Listener {
     @EventHandler
     public void SaveLetter(AsyncPlayerChatEvent e) {
-        if (n == 2) {
+        if (Postman.n == 2) {
             e.setCancelled(true);
             Player p = e.getPlayer();
             int number = BLData.get().getConfigurationSection(e.getMessage() + ".Lists.").getKeys(false).size() + 1;
@@ -63,9 +37,10 @@ public class send implements Listener, CommandExecutor {
                     BLData.save();
                     p.getInventory().removeItem(p.getInventory().getItemInMainHand());
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&lWysłano."));
-                    n = 0;
-                }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz książki w ręce.")); n = 0; }
-            }
+                    Postman.n = 0;
+                    Postman.StopBirdTimer = true;
+                }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie masz książki w ręce.")); Postman.n = 0; }
+            }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie znaleziono gracza.")); Postman.n = 0; }
         }
     }
 }

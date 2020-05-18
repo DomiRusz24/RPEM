@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.alvion.rpem.rpessentials.birdletter.JoinPlayerEvent;
+import pl.alvion.rpem.rpessentials.birdletter.Postman;
 import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
 import pl.alvion.rpem.rpessentials.birdletter.letter.send;
 import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
@@ -37,8 +38,9 @@ public final class RPEssentials extends JavaPlugin {
         //BirdLetter
         Bukkit.getServer().getPluginManager().registerEvents(new send(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new JoinPlayerEvent(), this);
-        getCommand("postman").setExecutor(new send());
-        getCommand("postmanplayer").setExecutor(new send());
+        Bukkit.getServer().getPluginManager().registerEvents(new Postman(), this);
+        getCommand("postman").setExecutor(new Postman());
+        getCommand("postmanplayer").setExecutor(new Postman());
           //BLData
         BLData.setup();
         BLData.save();
