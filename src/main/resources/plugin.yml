@@ -9,3 +9,5 @@ commands:
     description: General debug command
   postman:
   postmanplayer:
+  BL:
+    description: BirdLetter

@@ -30,7 +30,7 @@ public class Postman implements CommandExecutor, Listener {
             if (commandSender.hasPermission("BirdLetterOP")) {
                 n = 1;
                 StopBirdTimer = false;
-            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
+            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie masz dostępu do tej komendy.")); }
         }
         if (command.getName().equalsIgnoreCase("postmanplayer")) {
             if (n == 1) {
@@ -41,7 +41,7 @@ public class Postman implements CommandExecutor, Listener {
                 BirdGUI.setItem(3, sendItem);
 
                 p.openInventory(BirdGUI);
-            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNie masz dostępu do tej komendy.")); }
+            }else { commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie masz dostępu do tej komendy.")); }
 
         }
         return false;

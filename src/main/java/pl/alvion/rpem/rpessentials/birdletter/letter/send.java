@@ -1,18 +1,11 @@
 package pl.alvion.rpem.rpessentials.birdletter.letter;
 
-import javafx.geometry.Pos;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import pl.alvion.rpem.rpessentials.birdletter.Postman;
@@ -29,18 +22,17 @@ public class send implements Listener {
                 if (p.getInventory().getItemInMainHand().getType().equals(Material.WRITABLE_BOOK)) {
                     ItemStack book = p.getInventory().getItemInMainHand();
                     BookMeta bmeta = (BookMeta) book.getItemMeta();
-                    BLData.get().set(e.getMessage() + ".Lists." + number + ".Page1", bmeta.getPage(1));
-                    BLData.get().set(e.getMessage() + ".Lists." + number + ".Page2", bmeta.getPage(2));
-                    BLData.get().set(e.getMessage() + ".Lists." + number + ".Page3", bmeta.getPage(3));
-                    BLData.get().set(e.getMessage() + ".Lists." + number + ".Page4", bmeta.getPage(4));
-                    BLData.get().set(e.getMessage() + ".Lists." + number + ".Page5", bmeta.getPage(5));
-                    BLData.save();
-                    p.getInventory().removeItem(p.getInventory().getItemInMainHand());
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&lWysłano."));
-                    Postman.n = 0;
-                    Postman.StopBirdTimer = true;
-                }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie masz książki w ręce.")); Postman.n = 0; }
-            }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie znaleziono gracza.")); Postman.n = 0; }
+                    if (bmeta.getPageCount() == 1 || bmeta.getPageCount() == 2) {
+                        BLData.get().set(e.getMessage() + ".Lists." + number + ".Page1", bmeta.getPage(1));
+                        BLData.get().set(e.getMessage() + ".Lists." + number + ".Page2", bmeta.getPage(2));
+                        BLData.save();
+                        p.getInventory().removeItem(p.getInventory().getItemInMainHand());
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&lWysłano."));
+                        Postman.n = 0;
+                        Postman.StopBirdTimer = true;
+                    }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lKartka nie może mieć więcej niż 2 strony.")); Postman.n = 0; Postman.StopBirdTimer = true;}
+                }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie masz książki w ręce.")); Postman.n = 0; Postman.StopBirdTimer = true;}
+            }else { p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&8&lOOC&7]&c&lNie znaleziono gracza.")); Postman.n = 0; Postman.StopBirdTimer = true;}
         }
     }
 }
