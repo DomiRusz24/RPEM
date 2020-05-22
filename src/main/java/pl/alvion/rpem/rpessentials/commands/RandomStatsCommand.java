@@ -7,9 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.utils.gui.GUI;
 import pl.alvion.rpem.rpessentials.utils.gui.guis.stats.RandomStats;
+import pl.alvion.rpem.rpessentials.utils.gui.guis.stats.RandomStatsConfirmation;
 import pl.alvion.rpem.rpessentials.utils.names.Names;
 
-public class GeneralDebugCommand implements CommandExecutor {
+public class RandomStatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
 
@@ -18,11 +19,17 @@ public class GeneralDebugCommand implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        if (!player.hasPermission("AlvionRP.GDC")) {
+        if (!player.hasPermission("AlvionRP.RandomStatsCommand")) {
             player.sendMessage(Names.getPrefix() + ChatColor.RED + " Niewystarczajace uprawnienia!");
+            return false;
         }
 
-        GUI gui = new RandomStats();
+        if (RandomStats.rolledPreviously(player)) {
+            player.sendMessage(Names.getPrefix() + ChatColor.RED + " Wylosowales juz statystyki!");
+            return false;
+        }
+
+        GUI gui = new pl.alvion.rpem.rpessentials.utils.gui.guis.stats.RandomStats();
         gui.open(player);
 
 

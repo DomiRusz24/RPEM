@@ -1,24 +1,24 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable;
+package pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
-public class Magic extends Stat {
+public class Agility extends Stat {
+
 
     @Override
     public String name() {
-        return ChatColor.DARK_PURPLE + "Potencjal Magiczny";
+        return ChatColor.GRAY + "Zrecznosc";
     }
 
     @Override
     public ItemStack guiItem() {
-        return new ItemStack(Material.NETHER_STAR, 1);
+        return new ItemStack(Material.FEATHER, 1);
     }
-
 
     @Override
     public boolean canUpgrade(Player player) {
@@ -27,6 +27,8 @@ public class Magic extends Stat {
 
     @Override
     public Stats statName() {
-        return Stats.Magic;
+        return Stats.Agility;
     }
+
+
 }

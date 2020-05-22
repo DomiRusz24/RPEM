@@ -1,11 +1,8 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr.stats;
+package pl.alvion.rpem.rpessentials.rpplayer.stats;
 
 import org.bukkit.entity.Player;
 import pl.alvion.rpem.rpessentials.RPEssentials;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayer;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import pl.alvion.rpem.rpessentials.rpplayer.RPPlayer;
 
 public enum Stats {
     Agility,
@@ -68,6 +65,7 @@ public enum Stats {
         RPEssentials.getRPPlayerDataConfig().set(path + this.name(), value);
         RPEssentials.saveRPPlayerConfig();
     }
+
 
 
 

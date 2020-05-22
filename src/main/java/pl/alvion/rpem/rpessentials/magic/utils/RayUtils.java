@@ -30,6 +30,7 @@ public class RayUtils {
         Location l1 = new Location(loc1.getWorld(), loc1.getX(), loc1.getY(), loc1.getZ());
         Location l2 = new Location(loc2.getWorld(), loc2.getX(), loc2.getY(), loc2.getZ());
         Vector vector = l2.toVector().subtract(l1.toVector()).multiply(multiplier);
+        if (l1.distance(l2) == 0) locations.add(l1);
         while (l1.distance(l2) > 0.05) {
            locations.add(l1.clone());
            l1.add(vector);
@@ -42,6 +43,7 @@ public class RayUtils {
         Location l1 = new Location(loc1.getWorld(), loc1.getX(), loc1.getY(), loc1.getZ());
         Location l2 = new Location(loc2.getWorld(), loc2.getX(), loc2.getY(), loc2.getZ());
         Vector vector = l2.toVector().subtract(l1.toVector()).multiply(multiplier);
+        if (l1.distance(l2) == 0) locations.add(l1);
         while (l1.distance(l2) > checkDistance) {
             locations.add(l1.clone());
             l1.add(vector);

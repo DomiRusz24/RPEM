@@ -5,11 +5,14 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
+import pl.alvion.rpem.rpessentials.commands.RandomStatsCommand;
+import pl.alvion.rpem.rpessentials.commands.ResetRandomizedStats;
+import pl.alvion.rpem.rpessentials.commands.ToggleDebug;
 import pl.alvion.rpem.rpessentials.magic.elemental.listeners.ElementalListener;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.TraitsListener;
+import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
+import pl.alvion.rpem.rpessentials.rpplayer.traits.Trait;
+import pl.alvion.rpem.rpessentials.rpplayer.traits.TraitsListener;
 import pl.alvion.rpem.rpessentials.utils.gui.GUIListener;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.RPPlayerListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,13 +26,16 @@ public final class RPEssentials extends JavaPlugin {
     @Override
     public void onEnable() {
         System.out.println("AlvionRP core zostalo uruchomione");
-        //createRPPlayerDataConfig();
+        createRPPlayerDataConfig();
         plugin = this;
         Bukkit.getPluginManager().registerEvents(new RPPlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
         Bukkit.getPluginManager().registerEvents(new TraitsListener(), this);
         Bukkit.getPluginManager().registerEvents(new ElementalListener(), this);
-        Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
+        Bukkit.getPluginCommand("RandomStats").setExecutor(new RandomStatsCommand());
+        Bukkit.getPluginCommand("ToggleDebug").setExecutor(new ToggleDebug());
+        Bukkit.getPluginCommand("ResetRandomizedStats").setExecutor(new ResetRandomizedStats());
+        Trait.loadTraitsByChanceArray();
 
     }
 
@@ -44,9 +50,16 @@ public final class RPEssentials extends JavaPlugin {
 
     private void createRPPlayerDataConfig() {
         RPPlayerData = new File(getDataFolder(), "RPPlayerData.yml");
-        if (!RPPlayerData.exists()) {
-            RPPlayerData.getParentFile().mkdirs();
-            saveResource("RPPlayerData.yml", false);
+        try {
+            if (RPPlayerData.createNewFile()) {
+                try {
+                    RPPlayerData.getParentFile().createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         RPPlayerDataConfig= new YamlConfiguration();

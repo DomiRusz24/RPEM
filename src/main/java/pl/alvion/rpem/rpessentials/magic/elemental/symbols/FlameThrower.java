@@ -32,20 +32,10 @@ public class FlameThrower extends RuneSymbol {
             Element.playElementSound(player, Element.FIRE, 0.1f, 1.5f, 6, 8);
             particleRay.createRay(1, 5, 0.03);
         }
-        ElementalListener.setNextSneakEvent(player, () -> {nextActivate(player, middle, particleRays);});
+        ElementalListener.setNextSneakEvent(player, () -> {nextActivate(player);});
     }
 
-    private void nextActivate(Player player, Location middle, ArrayList<ParticleRay> particleRays) {
-        for (ParticleRay particleRay : particleRays) {
-            particleRay.toPlayer(player, middle);
-            particleRay.makeSmaller(middle);
-            Element.playElementSound(player, Element.FIRE, 0.1f, 1.5f, 6, 8);
-            particleRay.createRay(1, 20, 0.03);
-        }
-        ElementalListener.setNextSneakEvent(player, () -> {nextActivate(player, middle);});
-    }
-
-    private void nextActivate(Player player, Location middle) {
+    private void nextActivate(Player player) {
         new BukkitRunnable() {
             int i = 0;
             @Override
@@ -70,7 +60,7 @@ public class FlameThrower extends RuneSymbol {
                 }
                 i++;
             }
-        }.runTaskTimer(RPEssentials.plugin, 0,6);
+        }.runTaskTimer(RPEssentials.plugin, 0,5);
     }
 
 

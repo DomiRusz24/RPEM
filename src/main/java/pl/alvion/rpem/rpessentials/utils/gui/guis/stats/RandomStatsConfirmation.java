@@ -2,14 +2,21 @@ package pl.alvion.rpem.rpessentials.utils.gui.guis.stats;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.traits.Trait;
 import pl.alvion.rpem.rpessentials.utils.gui.GUI;
 import pl.alvion.rpem.rpessentials.utils.gui.GuiUtils;
 import pl.alvion.rpem.rpessentials.utils.gui.gui_items.Item;
+import pl.alvion.rpem.rpessentials.utils.statutils.RandomStatsGuiItemParser;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RandomStatsConfirmation implements GUI {
 
@@ -61,7 +68,20 @@ public class RandomStatsConfirmation implements GUI {
         Player player = (Player) event.getWhoClicked();
         if (itemStack.equals(gui.decline())) {
             RandomStats.reopen(player);
-            RandomStats.lastOpen.remove(player);
+            player.playSound(player.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1, 1);
+        }
+        if (itemStack.equals(gui.accept())) {
+            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+            HashMap<Stats, Integer> stats = RandomStatsGuiItemParser.itemToStats(event.getInventory().getItem(4));
+            ArrayList<Trait> traits = RandomStats.itemToTraits(event.getInventory().getItem(4));
+            for (Stats stat : stats.keySet()) {
+                stat.setStat(player, stats.get(stat));
+            }
+            for (Trait trait : traits) {
+                trait.addTrait(player);
+            }
+            RandomStats.setRolledPreviously(player);
+            player.closeInventory();
         }
 
     }

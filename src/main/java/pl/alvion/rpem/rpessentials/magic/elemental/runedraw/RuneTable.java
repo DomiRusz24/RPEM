@@ -63,7 +63,7 @@ public class RuneTable {
                 removeExistingTables(player, rT);
                 for (int i = 0; i < 49; i++) {
                     if (runePoints[i] != null) {
-                        if (rT.player.getLocation().distance(origin) > 7) {
+                        if (rT.player.getLocation().distance(origin) > 7 || !player.isOnline()) {
                             this.cancel();
                             Bukkit.getScheduler().cancelTask(pid);
                             runeTables.remove(rT);
@@ -134,7 +134,7 @@ public class RuneTable {
         ArrayList<Location> locations = RayUtils.getRayLocations(player, 10, 0.1);
         for (Location location : locations) {
             for (RuneTable runeTable : RuneTable.runeTables) {
-                if (runeTable.interactive) {
+                if (runeTable.interactive && runeTable.player.equals(player)) {
                     for (int i = 0; i < runeTable.runePoints.length; i++) {
                         if (runeTable.runePoints[i].location.distance(location) < 0.4) {
                             selectRunePoint(runeTable, i);

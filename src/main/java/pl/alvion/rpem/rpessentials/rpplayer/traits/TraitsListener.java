@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr.traits;
+package pl.alvion.rpem.rpessentials.rpplayer.traits;
 
 import org.bukkit.event.Listener;
 

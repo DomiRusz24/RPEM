@@ -23,22 +23,14 @@ public class GUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
         if (event.getClickedInventory() == null) return;
         if (lockedInventories.contains(event.getClickedInventory())) {
             event.setCancelled(true);
             RandomStats.clickEvent(event);
             RandomStatsConfirmation.clickEvent(event);
         }
+        Player player = (Player) event.getWhoClicked();
         if (event.getCurrentItem() == null) return;
-        if (event.getView().getTitle().equalsIgnoreCase(Names.randomizeGUI())) {
-            HashMap<Stats, Integer> statsHashMap = RandomStatsGuiItemParser.itemToStats(event.getCurrentItem());
-            if (statsHashMap != null) {
-                for (Stats stats : statsHashMap.keySet()) {
-                    player.sendMessage(stats.name() + " " + statsHashMap.get(stats));
-                }
-            }
-        }
 
     }
 

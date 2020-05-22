@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr;
+package pl.alvion.rpem.rpessentials.rpplayer;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
