@@ -5,6 +5,11 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.alvion.rpem.rpessentials.birdletter.JoinPlayerEvent;
+import pl.alvion.rpem.rpessentials.birdletter.Postman;
+import pl.alvion.rpem.rpessentials.birdletter.commands.reload;
+import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
+import pl.alvion.rpem.rpessentials.birdletter.letter.send;
 import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
 import pl.alvion.rpem.rpessentials.lockandkeys_dr.KeyListener;
 import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.TraitsListener;
@@ -41,6 +46,17 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getPluginCommand("ToggleDebug").setExecutor(new ToggleDebug());
         Bukkit.getPluginCommand("ResetRandomizedStats").setExecutor(new ResetRandomizedStats());
         Trait.loadTraitsByChanceArray();
+
+        //BirdLetter
+        Bukkit.getServer().getPluginManager().registerEvents(new send(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinPlayerEvent(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Postman(), this);
+        getCommand("postman").setExecutor(new Postman());
+        getCommand("postmanplayer").setExecutor(new Postman());
+        getCommand("BL").setExecutor(new reload());
+          //BLData
+        BLData.setup();
+        BLData.save();
 
     }
 

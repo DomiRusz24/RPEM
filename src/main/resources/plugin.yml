@@ -5,6 +5,12 @@ api-version: "1.14"
 authors: [DomiRusz24, KarwszPL, PopePL]
 description: Plugin AlvionRP Core.
 commands:
+  GDC:
+    description: General debug command
+  postman:
+  postmanplayer:
+  BL:
+    description: BirdLetter
   RandomStats:
     description: Randomize stats
   ToggleDebug:
