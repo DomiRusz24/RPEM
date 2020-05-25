@@ -1,7 +1,7 @@
 name: RPEssentials
 version: ${project.version}
 main: pl.alvion.rpem.rpessentials.RPEssentials
-api-version: "1.13"
+api-version: "1.14"
 authors: [DomiRusz24, KarwszPL, PopePL]
 description: Plugin AlvionRP Core.
 commands:
@@ -11,3 +11,13 @@ commands:
   postmanplayer:
   BL:
     description: BirdLetter
+  RandomStats:
+    description: Randomize stats
+  ToggleDebug:
+    description: Toggle debug command
+    aliases:
+      - td
+  ResetRandomizedStats:
+    description: Reset randomized stats
+    aliases:
+      - rrs

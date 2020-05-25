@@ -6,6 +6,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import pl.alvion.rpem.rpessentials.RPEssentials;
+import pl.alvion.rpem.rpessentials.magic.elemental.listeners.ElementalListener;
 import pl.alvion.rpem.rpessentials.magic.elemental.runedraw.Element;
 import pl.alvion.rpem.rpessentials.magic.elemental.runedraw.ParticleRay;
 import pl.alvion.rpem.rpessentials.magic.elemental.runedraw.RuneSymbol;
@@ -13,22 +14,32 @@ import pl.alvion.rpem.rpessentials.magic.elemental.runedraw.RuneTable;
 import pl.alvion.rpem.rpessentials.magic.utils.RayUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class LightningRune extends RuneSymbol {
+public class LightningBolt extends RuneSymbol {
 
 
     @Override
     public void activate(Player player, Location middle) {
         ArrayList<ParticleRay> particleRays = RuneTable.getPlayerTable(player).getRays();
         for (ParticleRay particleRay : particleRays) {
-            particleRay.toPlayer(player, middle);
-            particleRay.makeSmaller(middle);
+            particleRay.changeColor(Color.AQUA);
+            particleRay.createRay(5, 5);
         }
+
+        ElementalListener.setNextInteractEvent(player, () -> {nextActivate(player);});
+
+
+    }
+
+    private void nextActivate(Player player) {
         new BukkitRunnable() {
             @Override
             public void run() {
-
+                RuneTable runeTable = new RuneTable(player, moves(), 1.7);
+                ArrayList<ParticleRay> particleRays = runeTable.getRays();
                 for (ParticleRay particleRay : particleRays) {
+                    particleRay.makeSmaller(runeTable.getMiddle());
                     particleRay.changeColor(Color.AQUA);
                     particleRay.createRay(3, 10);
                 }
@@ -36,20 +47,12 @@ public class LightningRune extends RuneSymbol {
             }
         }.runTaskLater(RPEssentials.plugin, 20);
 
-
     }
 
 
     @Override
     public ArrayList<Integer> moves() {
-        ArrayList<Integer> moves = new ArrayList<>();
-        moves.add(4);
-        moves.add(16);
-        moves.add(16);
-        moves.add(25);
-        moves.add(25);
-        moves.add(37);
-        return moves;
+        return new ArrayList<>(Arrays.asList(4,16,16,25,25,37));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr.stats;
+package pl.alvion.rpem.rpessentials.rpplayer.stats;
 
 import org.bukkit.entity.Player;
 

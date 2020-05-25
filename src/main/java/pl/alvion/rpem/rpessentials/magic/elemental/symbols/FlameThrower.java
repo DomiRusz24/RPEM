@@ -25,23 +25,17 @@ public class FlameThrower extends RuneSymbol {
 
     @Override
     public void activate(Player player, Location middle) {
-        ArrayList<ParticleRay> particleRays = RuneTable.getPlayerTable(player).getRays();
+        ArrayList<ParticleRay> particleRays = RuneTable.getParticleRaysFromRuneTable(player, moves(), 3);
         for (ParticleRay particleRay : particleRays) {
             particleRay.toPlayer(player, middle);
             particleRay.makeSmaller(middle);
             Element.playElementSound(player, Element.FIRE, 0.1f, 1.5f, 6, 8);
             particleRay.createRay(1, 5, 0.03);
         }
-        ElementalListener.setNextSneakEvent(player, () -> {nextActivate(player, middle, particleRays);});
+        ElementalListener.setNextSneakEvent(player, () -> {nextActivate(player);});
     }
 
-    private void nextActivate(Player player, Location middle, ArrayList<ParticleRay> particleRays) {
-        for (ParticleRay particleRay : particleRays) {
-            particleRay.toPlayer(player, middle);
-            particleRay.makeSmaller(middle);
-            Element.playElementSound(player, Element.FIRE, 0.1f, 1.5f, 6, 8);
-            particleRay.createRay(1, 20, 0.03);
-        }
+    private void nextActivate(Player player) {
         new BukkitRunnable() {
             int i = 0;
             @Override
@@ -51,6 +45,22 @@ public class FlameThrower extends RuneSymbol {
                 i++;
             }
         }.runTaskTimer(RPEssentials.plugin, 0, 2);
+
+        new BukkitRunnable() {
+            int i = 0;
+            @Override
+            public void run() {
+                if (i > 16 || !player.isSneaking()) Bukkit.getScheduler().cancelTask(getTaskId());
+                RuneTable runeTable = new RuneTable(player, moves(), 1.7);
+                ArrayList<ParticleRay> particleRays = runeTable.getRays();
+                for (ParticleRay particleRay : particleRays) {
+                    particleRay.makeSmaller(runeTable.getMiddle());
+                    Element.playElementSound(player, Element.FIRE, 0.1f, 1.5f, 6, 8);
+                    particleRay.createRay(1, 3, 0.05);
+                }
+                i++;
+            }
+        }.runTaskTimer(RPEssentials.plugin, 0,5);
     }
 
 

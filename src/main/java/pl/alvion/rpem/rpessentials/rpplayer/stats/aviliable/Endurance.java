@@ -1,23 +1,22 @@
-package pl.alvion.rpem.rpessentials.rpplayer_dr.stats.aviliable;
+package pl.alvion.rpem.rpessentials.rpplayer.stats.aviliable;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stat;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.stats.Stats;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stat;
+import pl.alvion.rpem.rpessentials.rpplayer.stats.Stats;
 
-public class Intelligence extends Stat {
-
+public class Endurance extends Stat {
 
     @Override
     public String name() {
-        return ChatColor.BLUE + "Inteligencja";
+        return ChatColor.DARK_GRAY + "Wytrzymalosc";
     }
 
     @Override
     public ItemStack guiItem() {
-        return new ItemStack(Material.BOOK, 1);
+        return new ItemStack(Material.IRON_CHESTPLATE);
     }
 
     @Override
@@ -27,6 +26,6 @@ public class Intelligence extends Stat {
 
     @Override
     public Stats statName() {
-        return Stats.Intelligence;
+        return Stats.Endurance;
     }
 }

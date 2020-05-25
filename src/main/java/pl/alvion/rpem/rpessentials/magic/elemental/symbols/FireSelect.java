@@ -30,6 +30,6 @@ public class FireSelect extends RuneSymbol {
 
     @Override
     public ArrayList<Integer> moves() {
-        return new ArrayList<>(Arrays.asList(44, 39, 38, 10, 9, 4, 23, 25));
+        return new ArrayList<>(Arrays.asList(44,29,29,10,10,33,33,46,38,30,30,24,24,32,32,38,31,31));
     }
 }
