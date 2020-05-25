@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraft;
 import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraftingGUI;
 import pl.alvion.rpem.rpessentials.generalutils.gui.gui_items.customcrafting.BlankSpace;
-import pl.alvion.rpem.rpessentials.generalutils.gui.guis.RandomStats;
+import pl.alvion.rpem.rpessentials.utils.gui.guis.stats.RandomStats;
 
 import java.util.ArrayList;
 
