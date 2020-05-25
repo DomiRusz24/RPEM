@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.customcrafting_dr;
+package pl.alvion.rpem.rpessentials.customcrafting;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

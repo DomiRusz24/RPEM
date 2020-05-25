@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.lockandkeys_dr;
+package pl.alvion.rpem.rpessentials.lockandkeys;
 
 import org.bukkit.block.Block;
 

@@ -95,13 +95,13 @@ public enum Trait {
     }
 
     public static Trait[] getRandomTraits(int count) {
-        ArrayList<Integer> used = new ArrayList<>();
+        ArrayList<Trait> used = new ArrayList<>();
         Random random = new Random();
         Trait[] traits = new Trait[count];
         for (int i = 0; i < count;) {
             int r = random.nextInt(traitByChance.size());
-            if (!used.contains(r)) {
-                used.add(r);
+            if (!used.contains(traitByChance.get(r))) {
+                used.add(traitByChance.get(r));
                 traits[i]= traitByChance.get(r);
                 i++;
             }

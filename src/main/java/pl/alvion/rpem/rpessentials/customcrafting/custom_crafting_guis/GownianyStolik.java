@@ -1,12 +1,12 @@
-package pl.alvion.rpem.rpessentials.customcrafting_dr.custom_crafting_guis;
+package pl.alvion.rpem.rpessentials.customcrafting.custom_crafting_guis;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraft;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraftingGUI;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraftingTable;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.customcrafts.GownoNaPatyku;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraft;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraftingGUI;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraftingTable;
+import pl.alvion.rpem.rpessentials.customcrafting.customcrafts.GownoNaPatyku;
 import pl.alvion.rpem.rpessentials.generalutils.gui.gui_items.customcrafting.BlankSpace;
 
 public class GownianyStolik extends CustomCraftingGUI {

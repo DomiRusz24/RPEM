@@ -9,8 +9,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraft;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraftingGUI;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraft;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraftingGUI;
 import pl.alvion.rpem.rpessentials.generalutils.gui.gui_items.customcrafting.BlankSpace;
 import pl.alvion.rpem.rpessentials.utils.gui.guis.stats.RandomStats;
 

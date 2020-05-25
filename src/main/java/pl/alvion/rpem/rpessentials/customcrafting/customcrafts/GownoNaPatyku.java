@@ -1,12 +1,12 @@
-package pl.alvion.rpem.rpessentials.customcrafting_dr.customcrafts;
+package pl.alvion.rpem.rpessentials.customcrafting.customcrafts;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomCraft;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CustomRecipe;
-import pl.alvion.rpem.rpessentials.customcrafting_dr.CraftItem;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomCraft;
+import pl.alvion.rpem.rpessentials.customcrafting.CustomRecipe;
+import pl.alvion.rpem.rpessentials.customcrafting.CraftItem;
 
 import java.util.Arrays;
 

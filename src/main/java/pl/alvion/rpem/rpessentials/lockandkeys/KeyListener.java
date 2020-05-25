@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.lockandkeys_dr;
+package pl.alvion.rpem.rpessentials.lockandkeys;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,8 +12,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
 
 public class KeyListener implements Listener {
 

@@ -1,4 +1,4 @@
-package pl.alvion.rpem.rpessentials.customcrafting_dr;
+package pl.alvion.rpem.rpessentials.customcrafting;
 
 public abstract class CustomRecipe {
     public abstract CraftItem[] cratingShape();

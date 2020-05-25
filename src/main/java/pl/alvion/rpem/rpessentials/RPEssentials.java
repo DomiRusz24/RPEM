@@ -10,9 +10,7 @@ import pl.alvion.rpem.rpessentials.birdletter.Postman;
 import pl.alvion.rpem.rpessentials.birdletter.commands.reload;
 import pl.alvion.rpem.rpessentials.birdletter.file.BLData;
 import pl.alvion.rpem.rpessentials.birdletter.letter.send;
-import pl.alvion.rpem.rpessentials.commands.GeneralDebugCommand;
-import pl.alvion.rpem.rpessentials.lockandkeys_dr.KeyListener;
-import pl.alvion.rpem.rpessentials.rpplayer_dr.traits.TraitsListener;
+import pl.alvion.rpem.rpessentials.lockandkeys.KeyListener;
 import pl.alvion.rpem.rpessentials.commands.RandomStatsCommand;
 import pl.alvion.rpem.rpessentials.commands.ResetRandomizedStats;
 import pl.alvion.rpem.rpessentials.commands.ToggleDebug;
@@ -21,6 +19,7 @@ import pl.alvion.rpem.rpessentials.rpplayer.RPPlayerListener;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.Trait;
 import pl.alvion.rpem.rpessentials.rpplayer.traits.TraitsListener;
 import pl.alvion.rpem.rpessentials.utils.gui.GUIListener;
+import pl.alvion.rpem.rpessentials.worldinteract.sicklesystem.CropsSystem;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,17 +39,19 @@ public final class RPEssentials extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new GUIListener(), this);
         Bukkit.getPluginManager().registerEvents(new TraitsListener(), this);
         Bukkit.getPluginManager().registerEvents(new KeyListener(), this);
-        Bukkit.getPluginCommand("GDC").setExecutor(new GeneralDebugCommand());
         Bukkit.getPluginManager().registerEvents(new ElementalListener(), this);
         Bukkit.getPluginCommand("RandomStats").setExecutor(new RandomStatsCommand());
         Bukkit.getPluginCommand("ToggleDebug").setExecutor(new ToggleDebug());
         Bukkit.getPluginCommand("ResetRandomizedStats").setExecutor(new ResetRandomizedStats());
         Trait.loadTraitsByChanceArray();
 
+        Bukkit.getServer().getPluginManager().registerEvents(new CropsSystem(), this);
+
         //BirdLetter
         Bukkit.getServer().getPluginManager().registerEvents(new send(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new JoinPlayerEvent(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new Postman(), this);
+
         getCommand("postman").setExecutor(new Postman());
         getCommand("postmanplayer").setExecutor(new Postman());
         getCommand("BL").setExecutor(new reload());
