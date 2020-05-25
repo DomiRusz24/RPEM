@@ -99,7 +99,7 @@ public enum Trait {
         Random random = new Random();
         Trait[] traits = new Trait[count];
         for (int i = 0; i < count;) {
-            Integer r = random.nextInt(traitByChance.size());
+            int r = random.nextInt(traitByChance.size());
             if (!used.contains(r)) {
                 used.add(r);
                 traits[i]= traitByChance.get(r);
